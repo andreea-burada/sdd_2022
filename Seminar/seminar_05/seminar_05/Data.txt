@@ -1,0 +1,10 @@
+10001,Popescu Marian,Marketing,1500.9
+10002,Ionescu Maria,HR,1300.8
+10003,Angelescu Dobrin,Cybersecurity,1450.7
+10004,Vasilescu Vasile,IT,1700.3
+10005,Gheorghe Andrei,Risk Management,1650.8
+10006,Brailescu Ioana,Marketing,1520.5
+10007,Marinescu Bogdan,Management,1700.4
+10008,Nicolaescu Gigi,IT,1450.9
+10009,Ureche Vlad,HR,1340.8
+10010,Teodorescu Mihai,IT,1680.4
