@@ -1,0 +1,7 @@
+﻿  Source.c
+E:\Code Projects\sdd_2022\test_practice\for_debugging\Source.c(222,20): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
+E:\Code Projects\sdd_2022\test_practice\for_debugging\Source.c(222,16): warning C4024: 'memset': different types for formal and actual parameter 2
+E:\Code Projects\sdd_2022\test_practice\for_debugging\Source.c(223,21): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
+E:\Code Projects\sdd_2022\test_practice\for_debugging\Source.c(223,17): warning C4024: 'memset': different types for formal and actual parameter 2
+E:\Code Projects\sdd_2022\test_practice\for_debugging\Source.c(229,32): warning C4013: 'malloc' undefined; assuming extern returning int
+  for_debugging.vcxproj -> E:\Code Projects\sdd_2022\test_practice\Debug\for_debugging.exe
