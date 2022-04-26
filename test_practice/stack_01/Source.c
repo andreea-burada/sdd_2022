@@ -44,7 +44,7 @@ void main() {
 	char buffer[LINE_BUFFER], * token, separator_list[] = ",\n";
 	NodeInfo* apartmentDummy = NULL;
 	Stack* stack = NULL;
-	
+
 	if (!file) {
 		printf("File could not be found. Please check the file name.\n");
 	}
@@ -58,17 +58,19 @@ void main() {
 			token = strtok(buffer, separator_list);
 			apartmentDummy->number = atoi(token);
 			token = strtok(NULL, separator_list);
-			apartmentDummy->address = (char*)malloc(sizeof(token) + 1);
+			apartmentDummy->address = (char*)malloc(strlen(token) + 1);
 			strcpy(apartmentDummy->address, token);
 			token = strtok(NULL, separator_list);
 			apartmentDummy->floor = atoi(token);
 			token = strtok(NULL, separator_list);
 			apartmentDummy->rent = atof(token);
 			token = strtok(NULL, separator_list);
-			apartmentDummy->owner = (char*)malloc(sizeof(token) + 1);
+			apartmentDummy->owner = (char*)malloc(strlen(token) + 1);
 			strcpy(apartmentDummy->owner, token);
-			
-			pushStack_p(&stack, apartmentDummy);
+
+			//pushStack_p(&stack, apartmentDummy);
+			stack = pushStack(stack, apartmentDummy);
+
 			/*NodeInfo* peeked = peekStack(stack);
 			printInfo(peeked);*/
 		}
@@ -77,11 +79,12 @@ void main() {
 
 		printf("\n\nThe stack is %s\n", (isEmpty(stack) == true) ? "empty" : "NOT empty");
 
-		deleteStack_p(&stack);
+		//deleteStack_p(&stack);
+		stack = deleteStack(stack);
 
-		printf("\n\nThe stack is %s\n", (isEmpty(stack) == true) ? "empty" : "NOT empty");
+		printf("\n\nWe deleted the stack.\nThe stack is %s\n", (isEmpty(stack) == true) ? "empty" : "NOT empty");
 
-		
+
 	}
 	/*if (isEmpty(stack) == false)
 		printf("\nNOT EMTPY!\n");*/
@@ -91,11 +94,11 @@ void main() {
 NodeInfo* createInfo(int number, char* address, int floor, float rent, char* owner) {
 	NodeInfo* created = (NodeInfo*)malloc(sizeof(NodeInfo));
 	created->number = number;
-	created->address = (char*)malloc(sizeof(address) + 1);
+	created->address = (char*)malloc(strlen(address) + 1);
 	strcpy(created->address, address);
 	created->floor = floor;
 	created->rent = rent;
-	created->owner = (char*)malloc(sizeof(owner) + 1);
+	created->owner = (char*)malloc(strlen(owner) + 1);
 	strcpy(created->owner, owner);
 
 	return created;
@@ -103,7 +106,7 @@ NodeInfo* createInfo(int number, char* address, int floor, float rent, char* own
 
 void printInfo(NodeInfo* info) {
 	if (info) {
-		printf("\nNumber - %d; Address - %s; Floor - %d; Rent - %.2f; Owner - %s", 
+		printf("\nNumber - %d; Address - %s; Floor - %d; Rent - %.2f; Owner - %s",
 			info->number, info->address, info->floor, info->rent, info->owner);
 	}
 	else
@@ -151,6 +154,12 @@ void pushStack_p(Stack** topStack, NodeInfo* info) {
 	*topStack = newtopStack;
 }
 
+Stack* pushStack(Stack* topStack, NodeInfo* info) {
+	Stack* newTop = createStack(info);
+	newTop->pNext = topStack;
+	return newTop;
+}
+
 NodeInfo* popStack(Stack** topStack) {
 	NodeInfo* popped = NULL;
 
@@ -180,4 +189,16 @@ void deleteStack_p(Stack** topStack) {
 		free(dummy);
 		dummy = NULL;
 	}
+}
+
+Stack* deleteStack(Stack* topStack) {
+	NodeInfo* toDelete = NULL;
+	while (isEmpty(topStack) == false) {
+		toDelete = popStack(&topStack);
+		free(toDelete->address);
+		free(toDelete->owner);
+		free(toDelete);
+		toDelete = NULL;
+	}
+	return topStack;
 }
