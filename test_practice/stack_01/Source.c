@@ -84,10 +84,12 @@ void main() {
 
 		printf("\n\nWe deleted the stack.\nThe stack is %s\n", (isEmpty(stack) == true) ? "empty" : "NOT empty");
 
-
+		fclose(file);
 	}
 	/*if (isEmpty(stack) == false)
 		printf("\nNOT EMTPY!\n");*/
+
+	
 }
 
 // function implementations
