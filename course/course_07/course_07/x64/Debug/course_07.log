@@ -1,3 +1,0 @@
-﻿  Source.c
-E:\Code Projects\sdd_2022\course\course_07\course_07\Source.c(137,23): warning C4090: 'function': different 'const' qualifiers
-  course_07.vcxproj -> E:\Code Projects\sdd_2022\course\course_07\x64\Debug\course_07.exe
