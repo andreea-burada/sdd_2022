@@ -3,7 +3,11 @@
   <ProjectOutputs>
     <ProjectOutput>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <FullPath>E:\Code Projects\GitHubRepos\sdd_2022\test_practice\Debug\stack_01.exe</FullPath>
+=======
+      <FullPath>C:\Code Projects\SDD\test_practice\Debug\stack_01.exe</FullPath>
+>>>>>>> Stashed changes
 =======
       <FullPath>C:\Code Projects\SDD\test_practice\Debug\stack_01.exe</FullPath>
 >>>>>>> Stashed changes
