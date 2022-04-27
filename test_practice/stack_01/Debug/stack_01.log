@@ -1,3 +1,8 @@
 ﻿  Source.c
+<<<<<<< Updated upstream
 E:\Code Projects\GitHubRepos\sdd_2022\test_practice\stack_01\Source.c(66,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   stack_01.vcxproj -> E:\Code Projects\GitHubRepos\sdd_2022\test_practice\Debug\stack_01.exe
+=======
+C:\Code Projects\SDD\test_practice\stack_01\Source.c(66,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  stack_01.vcxproj -> C:\Code Projects\SDD\test_practice\Debug\stack_01.exe
+>>>>>>> Stashed changes
