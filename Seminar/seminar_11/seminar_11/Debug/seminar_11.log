@@ -1,0 +1,6 @@
+﻿  Source.c
+C:\Code Projects\SDD\Seminar\seminar_11\seminar_11\Source.c(98,27): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
+C:\Code Projects\SDD\Seminar\seminar_11\seminar_11\Source.c(98,23): warning C4024: 'memset': different types for formal and actual parameter 2
+C:\Code Projects\SDD\Seminar\seminar_11\seminar_11\Source.c(130,27): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
+C:\Code Projects\SDD\Seminar\seminar_11\seminar_11\Source.c(130,23): warning C4024: 'memset': different types for formal and actual parameter 2
+  seminar_11.vcxproj -> C:\Code Projects\SDD\Seminar\seminar_11\Debug\seminar_11.exe
