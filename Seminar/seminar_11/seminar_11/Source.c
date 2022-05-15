@@ -69,7 +69,7 @@ void main()
 				}
 			}
 		}
-
+		int a = 2;
 	}
 }
 
@@ -106,22 +106,38 @@ void resizeHashTable(HashTable* hashT)
 	free(aux);
 }
 
-int probing(HashTable* hashT, int index, char* key)
-{
-	// we probe while 1. we have not found the Employee in the hash table (if it already exists)
-	// 2. array positions are occupied
-	while (strcmp(hashT->items[index]->name, key) != 0 && hashT->items[index] != NULL)
-	{
-		index++;
-		if (index == hashT->size)
-		{
-			// resizing hash table
-			resizeHashTable(hashT);
-			index = hash_func(key, hashT->size);
-		}
-	}
+//int probing(HashTable* hashT, int index, char* key)
+//{
+//	// we probe while 1. we have not found the Employee in the hash table (if it already exists)
+//	// 2. array positions are occupied
+//	while (strcmp(hashT->items[index]->name, key) != 0 && hashT->items[index] != NULL)
+//	{
+//		index++;
+//		if (index == hashT->size)
+//		{
+//			// resizing hash table
+//			resizeHashTable(hashT);
+//			index = hash_func(key, hashT->size);
+//		}
+//	}
+//
+//	return index;
+//}
 
-	return index;
+int probing(HashTable* hTable, int index, char* key) {
+	int i = 0;
+	while (i < hTable->size) {
+		if (hTable->items[index] == NULL) {
+			return index;
+		}
+		else if (strcmp(hTable->items[index]->name, key) == 0) {
+			return index;
+		}
+		//index = (index + 1) % hTable->size;
+		resizeHashTable(hTable);
+	    index = hash_func(key, hTable->size);
+		i++;
+	}
 }
 
 void initHashTable(HashTable* hashT, int size)
