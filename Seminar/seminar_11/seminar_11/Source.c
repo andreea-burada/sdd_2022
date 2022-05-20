@@ -59,15 +59,18 @@ void main()
 			// NodeInfo* extracted = extractHashTable(&hashTable, nodeInfoToAdd->name);
 
 			printf("\n***********************************\n");
-			printf("\nSize: %d\n", hashTable.size);
+			printf("\nSize: %d\n\n", hashTable.size);
+			int occupiedPos = 0;
 			for (int i = 0; i < hashTable.size; i++)
 			{
 				if (hashTable.items[i] != NULL)
 				{
-					printf("Index[%d]: ", i);
+					printf("Index[%2d]: ", i);
 					printInfo(hashTable.items[i]);
+					occupiedPos += 1;
 				}
 			}
+			printf("\nOccupied indexes: %d\n\n", occupiedPos);
 		}
 		int a = 2;
 	}
@@ -106,38 +109,41 @@ void resizeHashTable(HashTable* hashT)
 	free(aux);
 }
 
-//int probing(HashTable* hashT, int index, char* key)
-//{
-//	// we probe while 1. we have not found the Employee in the hash table (if it already exists)
-//	// 2. array positions are occupied
-//	while (strcmp(hashT->items[index]->name, key) != 0 && hashT->items[index] != NULL)
-//	{
-//		index++;
-//		if (index == hashT->size)
-//		{
-//			// resizing hash table
-//			resizeHashTable(hashT);
-//			index = hash_func(key, hashT->size);
+//int probing(HashTable* hTable, int index, char* key) {
+//	int i = index;
+//	while (i < hTable->size) {
+//		if (hTable->items[i] == NULL) {
+//			return i;
 //		}
+//		else if (strcmp(hTable->items[i]->name, key) == 0) {
+//			return i;
+//		}
+//		//index = (index + 1) % hTable->size;
+//		i++;
 //	}
-//
+//	resizeHashTable(hTable);
+//	index = hash_func(key, hTable->size);
 //	return index;
 //}
 
-int probing(HashTable* hTable, int index, char* key) {
-	int i = 0;
-	while (i < hTable->size) {
-		if (hTable->items[index] == NULL) {
+int probing(HashTable* hashT, int index, char* key)
+{
+	// we probe while: array positions are occupied
+	// !!! we check if the occupied array position is a duplicate of what we want to insert
+	//	-> in which case we return that index and override the information on that position
+	while (hashT->items[index] != NULL)
+	{
+		if (strcmp(hashT->items[index]->name, key) == 0)
 			return index;
+		index++;
+		if (index == hashT->size)
+		{
+			// resizing hash table
+			resizeHashTable(hashT);
+			index = hash_func(key, hashT->size);
 		}
-		else if (strcmp(hTable->items[index]->name, key) == 0) {
-			return index;
-		}
-		//index = (index + 1) % hTable->size;
-		resizeHashTable(hTable);
-	    index = hash_func(key, hTable->size);
-		i++;
 	}
+	return index;
 }
 
 void initHashTable(HashTable* hashT, int size)
