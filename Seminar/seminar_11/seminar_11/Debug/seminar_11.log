@@ -1,6 +1,5 @@
-﻿  Source.c
-E:\Code Projects\GitHubRepos\sdd_2022\seminar\seminar_11\seminar_11\Source.c(101,27): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
-E:\Code Projects\GitHubRepos\sdd_2022\seminar\seminar_11\seminar_11\Source.c(101,23): warning C4024: 'memset': different types for formal and actual parameter 2
-E:\Code Projects\GitHubRepos\sdd_2022\seminar\seminar_11\seminar_11\Source.c(152,27): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
-E:\Code Projects\GitHubRepos\sdd_2022\seminar\seminar_11\seminar_11\Source.c(152,23): warning C4024: 'memset': different types for formal and actual parameter 2
+﻿  Source.cpp
+E:\Code Projects\GitHubRepos\sdd_2022\seminar\seminar_11\seminar_11\Source.cpp(11,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+E:\Code Projects\GitHubRepos\sdd_2022\seminar\seminar_11\seminar_11\Source.cpp(15,9): warning C4477: 'printf' : format string '%x' requires an argument of type 'unsigned int', but variadic argument 1 has type 'int *'
+E:\Code Projects\GitHubRepos\sdd_2022\seminar\seminar_11\seminar_11\Source.cpp(15,9): warning C4477: 'printf' : format string '%x' requires an argument of type 'unsigned int', but variadic argument 2 has type 'int *'
   seminar_11.vcxproj -> E:\Code Projects\GitHubRepos\sdd_2022\seminar\seminar_11\Debug\seminar_11.exe
