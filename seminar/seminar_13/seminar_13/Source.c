@@ -21,6 +21,7 @@
 
 	- BALANCE FACTOR CALCULATION: height[right_subtree] - height[left_subtree]
 
+	Link to table: https://github.com/andreea-burada/sdd_2022/blob/main/seminar/seminar_13/AVL_rotations.png
 						pivot ->
 	desc/pivot		-	  |	    +
    _______________________|____________
