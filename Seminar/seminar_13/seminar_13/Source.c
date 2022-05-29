@@ -7,7 +7,7 @@
 #include "string.h"
 
 /*
-	- AVL 
+	- AVL Tree
 	- if we want a balanced binary tree, we have to start with balanced and keep it that way
 	- because the rotations only apply to was before an insertion/deletion
 		-> when we insert we need to check the balance (equilibrium factor ?) and rebalance if needed
