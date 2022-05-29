@@ -24,11 +24,12 @@
 						pivot ->
 	desc/pivot		-	  |	    +
    _______________________|____________
-		-		RR(pivot) | RR(desc)
-						  | LR(pivot)
-
-		+		LR(desc)	LR(pivot)
-				RR(pivot)
+  d		-		RR(pivot) | RR(desc)
+  e						  | LR(pivot)
+  s
+  c		+		LR(desc)	LR(pivot)
+  |				RR(pivot)
+ \ / 
 */
 
 // general tree definition
