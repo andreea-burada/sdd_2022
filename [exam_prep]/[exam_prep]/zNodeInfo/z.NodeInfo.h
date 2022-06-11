@@ -2,6 +2,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
+#include <stdbool.h>
 
 // change this to fit the problem
 typedef struct Employee

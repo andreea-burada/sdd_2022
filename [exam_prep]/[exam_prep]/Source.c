@@ -16,6 +16,7 @@ void main()
 	FILE* pFile = fopen("Data.txt", "r");
 	char* token = NULL, lineBuffer[LINE_BUFFEER], * sepList = ",\n";
 	char* name = NULL, * dept = NULL; short code = 0; double salary = 0.0;
+	int size = 0;
 	if (pFile)
 	{
 		while (fgets(lineBuffer, sizeof(lineBuffer), pFile) != NULL)
@@ -31,7 +32,10 @@ void main()
 
 			// insert into data structure
 			//head = insertHead_Val(head, info);
-			insertHead_Ref(&head, info);
+			//insertHead_Ref(&head, info);
+			//head = insertTail_Val(head, info);
+			insertTail_Ref(&head, info);
+			size++;
 		}
 		// print data structure
 		printList(head);
@@ -45,10 +49,16 @@ void main()
 		//insertListOnPos_Ref(&head, dummyInfo, insPos);
 		//printList(head);
 
+		//printf("\n---\n");
+		//int delPos = 8;
+		////head = deleteListPos_Val(head, delPos);
+		//deleteListPos_Ref(&head, delPos);
+		//printList(head);
+
 		printf("\n---\n");
-		int delPos = 4;
-		head = deleteListPos_Val(head, delPos);
-		//insertListPos_Ref(&head, dummyInfo, insPos);
+		head = deleteAllCond_Val(head, size);
+		//deleteAllCond_Ref(&head, size);
 		printList(head);
 	}
+	int a = 2;
 }
