@@ -139,7 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Extra_1.c" />
     <ClCompile Include="Source.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data.txt" />
+    <Text Include="pasta1.txt" />
+    <Text Include="pasta2.txt" />
+    <Text Include="pasta3.txt" />
+    <Text Include="pasta4.txt" />
+    <Text Include="pasta5.txt" />
+    <Text Include="pasta6.txt" />
+    <Text Include="pasta7.txt" />
+    <Text Include="pasta8.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

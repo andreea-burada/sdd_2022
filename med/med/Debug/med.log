@@ -1,2 +1,14 @@
-﻿  Source.c
+﻿  Extra_1.c
+E:\Code Projects\GitHubRepos\sdd_2022\med\med\Extra_1.c(69,33): warning C4013: 'strlen' undefined; assuming extern returning int
+E:\Code Projects\GitHubRepos\sdd_2022\med\med\Extra_1.c(70,8): warning C4013: 'strcpy' undefined; assuming extern returning int
+E:\Code Projects\GitHubRepos\sdd_2022\med\med\Extra_1.c(93,21): warning C4013: 'strtok' undefined; assuming extern returning int
+E:\Code Projects\GitHubRepos\sdd_2022\med\med\Extra_1.c(99,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\Code Projects\GitHubRepos\sdd_2022\med\med\Extra_1.c(113,13): warning C4013: 'strcmp' undefined; assuming extern returning int
+E:\Code Projects\GitHubRepos\sdd_2022\med\med\Extra_1.c(93,1): warning C4047: 'initializing': 'char *' differs in levels of indirection from 'int'
+E:\Code Projects\GitHubRepos\sdd_2022\med\med\Extra_1.c(110,1): warning C4047: 'initializing': 'char *' differs in levels of indirection from 'int'
+E:\Code Projects\GitHubRepos\sdd_2022\med\med\Extra_1.c(450,1): warning C4047: 'initializing': 'NodArbore *' differs in levels of indirection from 'NodArbore **'
+  Source.c
+  Generating Code...
+E:\Code Projects\GitHubRepos\sdd_2022\med\med\Extra_1.c(78): warning C4716: 'initializarePastaDeDinti': must return a value
+E:\Code Projects\GitHubRepos\sdd_2022\med\med\Extra_1.c(140): warning C4715: 'citireFisier': not all control paths return a value
   med.vcxproj -> E:\Code Projects\GitHubRepos\sdd_2022\med\Debug\med.exe
