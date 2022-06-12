@@ -18,36 +18,9 @@
     <ClCompile Include="Source.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Extra_1.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Data.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="pasta1.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="pasta2.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="pasta3.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="pasta4.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="pasta5.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="pasta6.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="pasta7.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="pasta8.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

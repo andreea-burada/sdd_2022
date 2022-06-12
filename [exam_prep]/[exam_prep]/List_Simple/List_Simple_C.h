@@ -350,8 +350,8 @@ SimpleListC* deleteListPos_Val(SimpleListC* head, int pos) {
 			tmp->pNext = tmp->pNext->pNext;
 		} else if (tmp->pNext->pNext == head && index == pos - 1) {
 			// deleting the tail
-			tmp->pNext = tmp->pNext->pNext;
 			aux = tmp->pNext;
+			tmp->pNext = tmp->pNext->pNext;	
 		} else {
 			printf("\nPosition %2d is out of the list. Canceling deletion...\n", pos);
 		}
@@ -377,22 +377,32 @@ void deleteListPos_Ref(SimpleListC** head, int pos) {
 	if (pos == 1) {
 		// head deletion
 		aux = *head;
+		Node* tmp = *head;
+		// redoing the circular link
+		while (tmp->pNext != *head)
+			tmp = tmp->pNext;
 		*head = (*head)->pNext;
+		tmp->pNext = *head;
 	}
 	else {
 		int index = 1;
 		Node* tmp = *head;
-		while (index++ < (pos - 1) && tmp->pNext) {
+		while (index < (pos - 1) && tmp->pNext->pNext != *head) {
 			tmp = tmp->pNext;
+			index++;
 		}
 		// redoing the links so that the node that
 		// we want to delete is skipped over
-		if (tmp->pNext) {
+		if (tmp->pNext->pNext != *head) {
 			aux = tmp->pNext;
 			tmp->pNext = tmp->pNext->pNext;
 		}
-		if ((index < pos) || (index == pos && aux == NULL))
-		{
+		else if (tmp->pNext->pNext == *head && index == pos - 1) {
+			// deleting the tail
+			aux = tmp->pNext;
+			tmp->pNext = tmp->pNext->pNext;
+		}
+		else {
 			printf("\nPosition %2d is out of the list. Canceling deletion...\n", pos);
 		}
 	}
@@ -410,7 +420,7 @@ SimpleListC* deleteAllCond_Val(SimpleListC* head, int size)
 	Node* savedHead = head;
 	bool deleteConfirm;
 	// we treat the head outside the loop
-	while (savedHead == head && savedHead)
+	while (savedHead == head && savedHead->pNext != head)
 	{
 		if (savedHead->info->code % 2 == 0)
 		{
@@ -428,7 +438,18 @@ SimpleListC* deleteAllCond_Val(SimpleListC* head, int size)
 		else
 			break;
 	}
-	for (int i = 0; i < size - 1 && savedHead != NULL; i++)
+	// we check if we only have one node in the structure
+	if (head == head->pNext)
+	{
+		// delete the head and make the list null
+		free(head->info->name);
+		free(head->info->dept);
+		free(head->info);
+		free(head);
+		head = NULL;
+		return head;
+	}
+	for (int i = 0; i < size - 1; i++)
 	{
 		// we try to delete if the condition is met
 		deleteConfirm = false;
@@ -436,13 +457,9 @@ SimpleListC* deleteAllCond_Val(SimpleListC* head, int size)
 			if (savedHead->pNext->info->code % 2 == 0) {
 				Node* toDelete = savedHead->pNext;
 				deleteConfirm = true;
-				// if the node is the tail of the list
-				if (savedHead->pNext->pNext == NULL) {
-					savedHead->pNext = NULL;
-				}
-				else {
-					savedHead->pNext = savedHead->pNext->pNext;
-				}
+
+				savedHead->pNext = savedHead->pNext->pNext;
+
 				if (toDelete)
 				{
 					free(toDelete->info->name);

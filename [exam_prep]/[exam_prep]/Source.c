@@ -57,7 +57,7 @@ void main()
 		
 		// do other data structure specific actions and test
 		int insPos = 5;
-		int delPos = 1;
+		int delPos = 11;
 		NodeInfo* dummyInfo = createNodeInfo(10013, "Margaret Sinclair", "Cybersecurity", 23043.12);
 
 		#pragma region SimpleListNonC
@@ -109,14 +109,14 @@ void main()
 		//insertListAfterPos_Ref(&head, dummyInfo, insPos);
 		//printList(head);
 
-		printf("\n---\n");
+		//printf("\n---\n");
 
-		head = deleteListPos_Val(head, delPos);
+		//head = deleteListPos_Val(head, delPos);
 		//deleteListPos_Ref(&head, delPos);
 		//printList(head);
 
-		//printf("\n---\n");
-		//head = deleteAllCond_Val(head, size);
+		printf("\n---\n");
+		head = deleteAllCond_Val(head, size);
 		//deleteAllCond_Ref(&head, size);
 		printList(head);
 
