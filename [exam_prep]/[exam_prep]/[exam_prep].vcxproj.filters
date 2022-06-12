@@ -42,5 +42,8 @@
     <ClInclude Include="zNodeInfo\z.NodeInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="List_Simple\List_Simple_C_Tail.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

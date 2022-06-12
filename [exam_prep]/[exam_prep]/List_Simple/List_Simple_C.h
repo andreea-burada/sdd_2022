@@ -1,7 +1,7 @@
 
 #include "../zNodeInfo/z.NodeInfo.h"
 
-/*		-------------- Simple Linked List - Non-Circular --------------*/
+/*		-------------- Simple Linked List - Circular --------------*/
 
 // data structure definition
 typedef struct Node {
@@ -425,6 +425,12 @@ SimpleListC* deleteAllCond_Val(SimpleListC* head, int size)
 		if (savedHead->info->code % 2 == 0)
 		{
 			Node* toDelete = savedHead;
+			// redoing the circular link
+			Node* tmp = head;
+			while (tmp->pNext != head)
+				tmp = tmp->pNext;
+			tmp->pNext = head->pNext;
+
 			head = savedHead->pNext;
 			savedHead = savedHead->pNext;
 
@@ -439,7 +445,7 @@ SimpleListC* deleteAllCond_Val(SimpleListC* head, int size)
 			break;
 	}
 	// we check if we only have one node in the structure
-	if (head == head->pNext)
+	if (head == head->pNext && head->info->code % 2 == 0)
 	{
 		// delete the head and make the list null
 		free(head->info->name);
@@ -460,7 +466,7 @@ SimpleListC* deleteAllCond_Val(SimpleListC* head, int size)
 
 				savedHead->pNext = savedHead->pNext->pNext;
 
-				if (toDelete)
+ 				if (toDelete)
 				{
 					free(toDelete->info->name);
 					free(toDelete->info->dept);
@@ -478,28 +484,43 @@ SimpleListC* deleteAllCond_Val(SimpleListC* head, int size)
 void deleteAllCond_Ref(SimpleListC** head, int size)
 {
 	bool deleteConfirm;
+	Node* savedHead = *head;
 	// we treat the head outside the loop
-	while (*head)
+	while (savedHead == *head && savedHead->pNext != *head)
 	{
-		if ((*head)->info->code % 2 == 0)
+		if (savedHead->info->code % 2 == 0)
 		{
-			Node* toDelete = *head;
-			*head = (*head)->pNext;
+			Node* toDelete = savedHead;
+			// redoing the circular link
+			Node* tmp = *head;
+			while (tmp->pNext != *head)
+				tmp = tmp->pNext;
+			tmp->pNext = (*head)->pNext;
+
+			*head = savedHead->pNext;
+			savedHead = savedHead->pNext;
 
 			free(toDelete->info->name);
 			free(toDelete->info->dept);
 			free(toDelete->info);
 			free(toDelete);
+			toDelete = NULL;
 			size--;
 		}
 		else
 			break;
 	}
-
-	if (*head == NULL)
+	// we check if we only have one node in the structure
+	if (*head == (*head)->pNext && (*head)->info->code % 2 == 0)
+	{
+		// delete the head and make the list null
+		free((*head)->info->name);
+		free((*head)->info->dept);
+		free((*head)->info);
+		free(head);
+		head = NULL;
 		return;
-
-	Node* savedHead = *head;
+	}
 	for (int i = 0; i < size - 1 && savedHead != NULL; i++)
 	{
 		// we try to delete if the condition is met
@@ -533,6 +554,10 @@ void deleteAllCond_Ref(SimpleListC** head, int size)
 
 void printList(SimpleListC* head) {
 	printf("\n");
+	if (head == NULL) {
+		printf("List is empty!\n");
+		return;
+	}
 	int pos = 1;
 	Node* aux = head;
 	while (head->pNext != aux) {
@@ -542,7 +567,4 @@ void printList(SimpleListC* head) {
 	}
 	printf("%2d - ", pos++);
 	printInfo(head->info);
-
-	if (pos == 1)
-		printf("List is empty\n");
 }

@@ -150,6 +150,7 @@
     <ClCompile Include="zNodeInfo\z.NodeInfo.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="List_Simple\List_Simple_C_Tail.h" />
     <ClInclude Include="List_Simple\List_Simple_NonC.h" />
     <ClInclude Include="zNodeInfo\z.NodeInfo.h" />
   </ItemGroup>
