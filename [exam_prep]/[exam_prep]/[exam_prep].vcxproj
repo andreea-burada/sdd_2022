@@ -143,7 +143,9 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="List_Simple\List_Simple_NonC.c" />
+    <ClCompile Include="List_Simple\List_Simple_C.cpp" />
+    <ClCompile Include="List_Simple\List_Simple_C.h" />
+    <ClCompile Include="List_Simple\List_Simple_NonC.cpp" />
     <ClCompile Include="Source.c" />
     <ClCompile Include="zNodeInfo\z.NodeInfo.c" />
   </ItemGroup>

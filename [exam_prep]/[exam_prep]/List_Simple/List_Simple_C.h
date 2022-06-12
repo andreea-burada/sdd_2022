@@ -7,31 +7,31 @@
 typedef struct Node {
 	Employee* info;
 	struct Node* pNext;
-} Node, SimpleListNonC;
+} Node, SimpleListC;
 
 /*simple list specific methods*/
 Node* createNode(Employee*);
 
-SimpleListNonC* insertHead_Val(SimpleListNonC*, Employee*);
-void insertHead_Ref(SimpleListNonC**, Employee*);
+SimpleListC* insertHead_Val(SimpleListC*, Employee*);	// done
+void insertHead_Ref(SimpleListC**, Employee*);
 
-SimpleListNonC* insertTail_Val(SimpleListNonC*, Employee*);
-void insertTail_Ref(SimpleListNonC**, Employee*);
+SimpleListC* insertTail_Val(SimpleListC*, Employee*);
+void insertTail_Ref(SimpleListC**, Employee*);
 
-SimpleListNonC* insertListOnPos_Val(SimpleListNonC*, Employee*, int);
-void insertListOnPos_Ref(SimpleListNonC**, Employee*, int);
-SimpleListNonC* insertListBeforePos_Val(SimpleListNonC*, Employee*, int);
-void insertListBeforePos_Ref(SimpleListNonC**, Employee*, int);
-SimpleListNonC* insertListAfterPos_Val(SimpleListNonC*, Employee*, int);
-void insertListAfterPos_Ref(SimpleListNonC**, Employee*, int);
+SimpleListC* insertListOnPos_Val(SimpleListC*, Employee*, int);
+void insertListOnPos_Ref(SimpleListC**, Employee*, int);
+SimpleListC* insertListBeforePos_Val(SimpleListC*, Employee*, int);
+void insertListBeforePos_Ref(SimpleListC**, Employee*, int);
+SimpleListC* insertListAfterPos_Val(SimpleListC*, Employee*, int);
+void insertListAfterPos_Ref(SimpleListC**, Employee*, int);
 
-SimpleListNonC* deleteListPos_Val(SimpleListNonC*, int);
-void deleteListPos_Ref(SimpleListNonC**, int);
+SimpleListC* deleteListPos_Val(SimpleListC*, int);
+void deleteListPos_Ref(SimpleListC**, int);
 
-SimpleListNonC* deleteAllCond_Val(SimpleListNonC*, int);
-void deleteAllCond_Ref(SimpleListNonC**, int);
+SimpleListC* deleteAllCond_Val(SimpleListC*, int);
+void deleteAllCond_Ref(SimpleListC**, int);
 
-void printList(SimpleListNonC*);
+void printList(SimpleListC*);
 
 // implementation
 
@@ -46,58 +46,84 @@ Node* createNode(Employee* info) {
 
 
 
-SimpleListNonC* insertHead_Val(SimpleListNonC* head, Employee* info) {
+SimpleListC* insertHead_Val(SimpleListC* head, Employee* info) {
 	Node* newHead = createNode(info);
-	newHead->pNext = head;
+	if (head)
+	{
+		Node* aux = head;
+		while (aux->pNext != head)
+			aux = aux->pNext;
+		aux->pNext = newHead;
+		newHead->pNext = head;
+	}
+	else
+	{
+		newHead->pNext = newHead;
+	}	
 	head = newHead;
 	return head;
 }
-void insertHead_Ref(SimpleListNonC** head, Employee* info) {
+void insertHead_Ref(SimpleListC** head, Employee* info) {
 	Node* newHead = createNode(info);
-	newHead->pNext = *head;
+	if (*head)
+	{
+		Node* aux = *head;
+		while (aux->pNext != *head)
+			aux = aux->pNext;
+		aux->pNext = newHead;
+		newHead->pNext = *head;
+	}
+	else
+	{
+		newHead->pNext = newHead;
+	}
 	*head = newHead;
 }
 
 
 
-SimpleListNonC* insertTail_Val(SimpleListNonC* head, Employee* info)
+SimpleListC* insertTail_Val(SimpleListC* head, Employee* info)
 {
 	Node* newTail = createNode(info);
 	// 1. connect node to the structure
 	if (head == NULL) {
 		head = newTail;
+		newTail->pNext = newTail;
 	}
 	// 2. connect the structure to the node
 	else {
 		Node* tmp = head;
-		while (tmp->pNext) {
+		while (tmp->pNext != head) {
 			tmp = tmp->pNext;
 		}
 		tmp->pNext = newTail;
+		newTail->pNext = head;
 	}
 	return head;
 }
-void insertTail_Ref(SimpleListNonC** head, Employee* info)
+void insertTail_Ref(SimpleListC** head, Employee* info)
 {
 	Node* newTail = createNode(info);
 	// 1. connect node to the structure
 	if (*head == NULL) {
 		*head = newTail;
+		newTail->pNext = newTail;
 	}
 	// 2. connect the structure to the node
 	else {
 		Node* tmp = *head;
-		while (tmp->pNext) {
+		while (tmp->pNext != *head) {
 			tmp = tmp->pNext;
 		}
 		tmp->pNext = newTail;
+		newTail->pNext = *head;
 	}
 }
 
 
 
 // if pos = length of list + 1 -> inserting at the end
-SimpleListNonC* insertListOnPos_Val(SimpleListNonC* head, Employee* emp, int pos) {
+SimpleListC* insertListOnPos_Val(SimpleListC* head, Employee* emp, int pos) {
 	if (pos <= 0)
 	{
 		printf("\nPosition cannot be 0 or negative. Insertion canceling...\n");
@@ -114,21 +140,21 @@ SimpleListNonC* insertListOnPos_Val(SimpleListNonC* head, Employee* emp, int pos
 		// insert at the position
 		Node* aux = head;
 		int index = 1;
-		while (index++ < (pos - 1) && aux->pNext) {
+		while (index++ < (pos - 1) && aux->pNext != head) {
 			aux = aux->pNext;
 		}
-		if ((aux->pNext) || (index == pos && aux->pNext == NULL))
+		if (index == pos)
 		{
 			aux->pNext = insertHead_Val(aux->pNext, emp);
 			//insertHead_Ref(&(aux->pNext), emp);
 		}
 		else
 			printf("\nPosition is greater than the length + 1 of the list. Insertion canceling...\n");
-		
+
 	}
 	return head;
 }
-void insertListOnPos_Ref(SimpleListNonC** head, Employee* emp, int pos) {
+void insertListOnPos_Ref(SimpleListC** head, Employee* emp, int pos) {
 	if (pos <= 0)
 	{
 		printf("\nPosition cannot be 0 or negative. Insertion canceling...\n");
@@ -145,21 +171,21 @@ void insertListOnPos_Ref(SimpleListNonC** head, Employee* emp, int pos) {
 		// insert at the position
 		Node* aux = *head;
 		int index = 1;
-		while (index++ < (pos - 1) && aux->pNext) {
+		while (index++ < (pos - 1) && aux->pNext != *head) {
 			aux = aux->pNext;
 		}
-		if ((aux->pNext) || (index == pos && aux->pNext == NULL))
+		if (index == pos)
 		{
 			aux->pNext = insertHead_Val(aux->pNext, emp);
 			//insertHead_Ref(&(aux->pNext), emp);
 		}
 		else
 			printf("\nPosition is greater than the length + 1 of the list. Insertion canceling...\n");
-		
+
 	}
 }
 // if pos = length + 1 -> inserting at the tail
-SimpleListNonC* insertListBeforePos_Val(SimpleListNonC* head, Employee* emp, int pos) {
+SimpleListC* insertListBeforePos_Val(SimpleListC* head, Employee* emp, int pos) {
 	if (pos <= 0)
 	{
 		printf("\nPosition cannot be 0 or negative. Insertion canceling...\n");
@@ -177,11 +203,11 @@ SimpleListNonC* insertListBeforePos_Val(SimpleListNonC* head, Employee* emp, int
 		// insert at the position
 		Node* aux = head;
 		int index = 0;
-		while (index < (pos - 1) && aux->pNext) {
+		while (index < (pos - 1) && aux->pNext != head) {
 			index++;
 			aux = aux->pNext;
 		}
-		if ((aux->pNext) || (index == pos && aux->pNext == NULL))
+		if (index == pos - 1)
 		{
 			aux->pNext = insertHead_Val(aux->pNext, emp);
 			//insertHead_Ref(&(aux->pNext), emp);
@@ -192,7 +218,7 @@ SimpleListNonC* insertListBeforePos_Val(SimpleListNonC* head, Employee* emp, int
 	}
 	return head;
 }
-void insertListBeforePos_Ref(SimpleListNonC** head, Employee* emp, int pos) {
+void insertListBeforePos_Ref(SimpleListC** head, Employee* emp, int pos) {
 	if (pos <= 0)
 	{
 		printf("\nPosition cannot be 0 or negative. Insertion canceling...\n");
@@ -210,11 +236,11 @@ void insertListBeforePos_Ref(SimpleListNonC** head, Employee* emp, int pos) {
 		// insert at the position
 		Node* aux = *head;
 		int index = 0;
-		while (index < (pos - 1) && aux->pNext) {
+		while (index < (pos - 1) && aux->pNext != *head) {
 			index++;
 			aux = aux->pNext;
 		}
-		if ((aux->pNext) || (index == pos && aux->pNext == NULL))
+		if (index == pos - 1)
 		{
 			aux->pNext = insertHead_Val(aux->pNext, emp);
 			//insertHead_Ref(&(aux->pNext), emp);
@@ -225,7 +251,7 @@ void insertListBeforePos_Ref(SimpleListNonC** head, Employee* emp, int pos) {
 	}
 }
 // if pos = 0 -> insert at head
-SimpleListNonC* insertListAfterPos_Val(SimpleListNonC* head, Employee* emp, int pos) {
+SimpleListC* insertListAfterPos_Val(SimpleListC* head, Employee* emp, int pos) {
 	if (pos < 0)
 	{
 		printf("\nPosition cannot be negative. Insertion canceling...\n");
@@ -242,11 +268,11 @@ SimpleListNonC* insertListAfterPos_Val(SimpleListNonC* head, Employee* emp, int 
 		// insert at the position
 		Node* aux = head;
 		int index = 0;
-		while (index < (pos - 1) && aux->pNext) {
+		while (index < (pos - 1) && aux->pNext != head) {
 			index++;
 			aux = aux->pNext;
 		}
-		if ((aux->pNext) || (index == pos - 1 && aux->pNext == NULL))
+		if (index == pos - 1)
 		{
 			aux->pNext = insertHead_Val(aux->pNext, emp);
 			//insertHead_Ref(&(aux->pNext), emp);
@@ -257,7 +283,7 @@ SimpleListNonC* insertListAfterPos_Val(SimpleListNonC* head, Employee* emp, int 
 	}
 	return head;
 }
-void insertListAfterPos_Ref(SimpleListNonC** head, Employee* emp, int pos) {
+void insertListAfterPos_Ref(SimpleListC** head, Employee* emp, int pos) {
 	if (pos < 0)
 	{
 		printf("\nPosition cannot be negative. Insertion canceling...\n");
@@ -274,11 +300,11 @@ void insertListAfterPos_Ref(SimpleListNonC** head, Employee* emp, int pos) {
 		// insert at the position
 		Node* aux = *head;
 		int index = 0;
-		while (index < (pos - 1) && aux->pNext) {
+		while (index < (pos - 1) && aux->pNext != *head) {
 			index++;
 			aux = aux->pNext;
 		}
-		if ((aux->pNext) || (index == pos - 1 && aux->pNext == NULL))
+		if (index == pos - 1)
 		{
 			aux->pNext = insertHead_Val(aux->pNext, emp);
 			//insertHead_Ref(&(aux->pNext), emp);
@@ -291,7 +317,7 @@ void insertListAfterPos_Ref(SimpleListNonC** head, Employee* emp, int pos) {
 
 
 
-SimpleListNonC* deleteListPos_Val(SimpleListNonC* head, int pos) {
+SimpleListC* deleteListPos_Val(SimpleListC* head, int pos) {
 	// we need to save the node we want to delete in order to deallocate memory
 	if (pos <= 0)
 	{
@@ -303,22 +329,30 @@ SimpleListNonC* deleteListPos_Val(SimpleListNonC* head, int pos) {
 	if (pos == 1) {
 		// head deletion
 		aux = head;
+		Node* tmp = head;
+		// redoing the circular link
+		while (tmp->pNext != head)
+			tmp = tmp->pNext;
 		head = head->pNext;
+		tmp->pNext = head;
 	}
 	else {
 		int index = 1;
 		Node* tmp = head;
-		while (index++ < (pos - 1) && tmp->pNext) {
+		while (index < (pos - 1) && tmp->pNext->pNext != head) {
 			tmp = tmp->pNext;
+			index++;
 		}
 		// redoing the links so that the node that
 		// we want to delete is skipped over
-		if (tmp->pNext) {
+		if (tmp->pNext->pNext != head) {
 			aux = tmp->pNext;
 			tmp->pNext = tmp->pNext->pNext;
-		}
-		if ((index < pos) || (index == pos && aux == NULL))
-		{
+		} else if (tmp->pNext->pNext == head && index == pos - 1) {
+			// deleting the tail
+			tmp->pNext = tmp->pNext->pNext;
+			aux = tmp->pNext;
+		} else {
 			printf("\nPosition %2d is out of the list. Canceling deletion...\n", pos);
 		}
 	}
@@ -331,7 +365,7 @@ SimpleListNonC* deleteListPos_Val(SimpleListNonC* head, int pos) {
 	}
 	return head;
 }
-void deleteListPos_Ref(SimpleListNonC** head, int pos) {
+void deleteListPos_Ref(SimpleListC** head, int pos) {
 	// we need to save the node we want to delete in order to deallocate memory
 	if (pos <= 0)
 	{
@@ -371,7 +405,7 @@ void deleteListPos_Ref(SimpleListNonC** head, int pos) {
 	}
 }
 
-SimpleListNonC* deleteAllCond_Val(SimpleListNonC* head, int size)
+SimpleListC* deleteAllCond_Val(SimpleListC* head, int size)
 {
 	Node* savedHead = head;
 	bool deleteConfirm;
@@ -424,7 +458,7 @@ SimpleListNonC* deleteAllCond_Val(SimpleListNonC* head, int size)
 	}
 	return head;
 }
-void deleteAllCond_Ref(SimpleListNonC** head, int size)
+void deleteAllCond_Ref(SimpleListC** head, int size)
 {
 	bool deleteConfirm;
 	// we treat the head outside the loop
@@ -480,14 +514,18 @@ void deleteAllCond_Ref(SimpleListNonC** head, int size)
 }
 
 
-void printList(SimpleListNonC* head) {
+void printList(SimpleListC* head) {
 	printf("\n");
 	int pos = 1;
-	while (head) {
+	Node* aux = head;
+	while (head->pNext != aux) {
 		printf("%2d - ", pos++);
 		printInfo(head->info);
 		head = head->pNext;
 	}
+	printf("%2d - ", pos++);
+	printInfo(head->info);
+
 	if (pos == 1)
 		printf("List is empty\n");
 }

@@ -25,7 +25,7 @@ NodeInfo* createNodeInfo(short code, char* name, char* dept, double salary)
 void printInfo(NodeInfo* info)
 {
 	if (info)
-		printf("Code: %d - Name: %-25s, Dept: %-25s\tSalary: %.2f\n", info->code, info->name,
+		printf("Code: %d - Name: %-25s, Dept: %-15s\tSalary: %.2f\n", info->code, info->name,
 			info->dept, info->salary);
 	else
 		printf("No data to print!");

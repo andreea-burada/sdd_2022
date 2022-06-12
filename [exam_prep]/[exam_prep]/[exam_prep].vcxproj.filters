@@ -22,10 +22,16 @@
     <ClCompile Include="Source.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="List_Simple\List_Simple_NonC.c">
+    <ClCompile Include="zNodeInfo\z.NodeInfo.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zNodeInfo\z.NodeInfo.c">
+    <ClCompile Include="List_Simple\List_Simple_C.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="List_Simple\List_Simple_C.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="List_Simple\List_Simple_NonC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

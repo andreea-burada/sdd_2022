@@ -1,2 +1,9 @@
-﻿  Source.c
+﻿  List_Simple_C.cpp
+  List_Simple_C.h
+  List_Simple_NonC.cpp
+  Generating Code...
+  Source.c
+  z.NodeInfo.c
+  Generating Code...
+Debug\List_Simple_C.obj : warning LNK4042: object specified more than once; extras ignored
   [exam_prep].vcxproj -> E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\Debug\[exam_prep].exe
