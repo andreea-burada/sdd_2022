@@ -12,7 +12,8 @@
 //#include "List_Simple/List_Simple_NonC.h"
 //#include "List_Simple/List_Simple_C.h"
 //#include "List_Simple/List_Simple_C_Tail.h"
-#include "List_Double/List_Double_NonC_HeadTail.h"
+//#include "List_Double/List_Double_NonC_HeadTail.h"
+//#include "Stack/Stack.h"
 
 void main()
 {
@@ -20,7 +21,8 @@ void main()
 	//SimpleListNonC* head = NULL;
 	//SimpleListC* head = NULL;
 	//SimpleListC_Tail* tail = NULL;
-	DoubleListNonC doubleList = { .head = NULL, .tail = NULL };
+	//DoubleListNonC doubleList = { .head = NULL, .tail = NULL };
+	//Stack *topStack = NULL;
 
 	FILE* pFile = fopen(FILE_NAME, "r");
 	char* token = NULL, lineBuffer[LINE_BUFFEER], * sepList = ",\n";
@@ -67,14 +69,19 @@ void main()
 			//doubleList = insertHead_Val(doubleList, info);
 			//insertHead_Ref(&doubleList, info);
 			//doubleList = insertTail_Val(doubleList, info);
-			insertTail_Ref(&doubleList, info);
+			//insertTail_Ref(&doubleList, info);
+			#pragma endregion
+
+			#pragma region Stack
+			//topStack = push_Val(topStack, info);
+			//push_Ref(&topStack, info);
 			#pragma endregion
 			size++;
 		}
 		// print data structure
 		//printList(head);
 		//printList(tail);
-		printList(doubleList);
+		//printList(doubleList);
 		
 		// do other data structure specific actions and test
 		int insPos = 11;
@@ -184,15 +191,15 @@ void main()
 		#pragma endregion
 
 		#pragma region DoubleListNonC
-		printf("\n---\n");
+		/*printf("\n---\n");
 		printf("\nTail - ");
 		if (doubleList.tail)
 		printInfo(doubleList.tail->info);
 		printf("\nPrev Tail - ");
 		if (doubleList.tail->pPrev)
-		printInfo(doubleList.tail->pPrev->info);
+		printInfo(doubleList.tail->pPrev->info);*/
 
-		printf("\n---\n");
+		//printf("\n---\n");
 
 		//doubleList = insertListOnPos_Val(doubleList, dummyInfo, insPos);
 		//insertListOnPos_Ref(&doubleList, dummyInfo, insPos);
@@ -208,10 +215,10 @@ void main()
 		//printList(doubleList);
 
 		//doubleList = deleteAllCond_Val(doubleList, size);
-		deleteAllCond_Ref(&doubleList, size);
-		printList(doubleList);
+		//deleteAllCond_Ref(&doubleList, size);
+		//printList(doubleList);
 
-		printf("\n---\n");
+		/*printf("\n---\n");
 		printf("\nTail - ");
 		if (doubleList.tail) {
 			printInfo(doubleList.tail->info);
@@ -222,7 +229,23 @@ void main()
 				printf(" No Prev of Tail");
 		}
 		else
-			printf(" No Tail");
+			printf(" No Tail");*/
+		#pragma endregion
+
+		#pragma region Stack
+		//printStack(&topStack);
+
+		//printf("\n---\n");
+
+		//topStack = deleteStack_Val(topStack);
+		//deleteStack_Ref(&topStack);
+		//printStack(&topStack);
+
+		//printf("\n---\n");
+
+		//topStack = deleteStackCond_Val(topStack);
+		//deleteStackCond_Ref(&topStack);
+		//printStack(&topStack);
 		#pragma endregion
 
 	}

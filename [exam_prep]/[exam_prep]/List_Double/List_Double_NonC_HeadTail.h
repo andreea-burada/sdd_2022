@@ -33,8 +33,8 @@ void insertListAfterPos_Ref(DoubleListNonC*, Employee*, int);			// done
 DoubleListNonC deleteListPos_Val(DoubleListNonC, int);		// done
 void deleteListPos_Ref(DoubleListNonC*, int);				// done
 
-DoubleListNonC deleteAllCond_Val(DoubleListNonC, int);
-void deleteAllCond_Ref(DoubleListNonC**, int);
+DoubleListNonC deleteAllCond_Val(DoubleListNonC, int);		// done
+void deleteAllCond_Ref(DoubleListNonC*, int);				// done
 
 void printList(DoubleListNonC);
 

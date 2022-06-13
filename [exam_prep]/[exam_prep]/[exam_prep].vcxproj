@@ -148,12 +148,14 @@
     <ClCompile Include="List_Simple\List_Simple_C.h" />
     <ClCompile Include="List_Simple\List_Simple_NonC.cpp" />
     <ClCompile Include="Source.c" />
+    <ClCompile Include="Stack\Stack.cpp" />
     <ClCompile Include="zNodeInfo\z.NodeInfo.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="List_Double\List_Double_NonC_HeadTail.h" />
     <ClInclude Include="List_Simple\List_Simple_C_Tail.h" />
     <ClInclude Include="List_Simple\List_Simple_NonC.h" />
+    <ClInclude Include="Stack\Stack.h" />
     <ClInclude Include="zNodeInfo\z.NodeInfo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

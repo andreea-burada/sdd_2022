@@ -2,9 +2,10 @@
   List_Simple_C.cpp
   List_Simple_C.h
   List_Simple_NonC.cpp
+  Stack.cpp
   Generating Code...
   Source.c
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\[exam_prep]\List_Double\List_Double_NonC_HeadTail.h(428,40): warning C4028: formal parameter 1 different from declaration
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\[exam_prep]\Stack\Stack.h(182,17): warning C4098: 'deleteStackCond_Ref': 'void' function returning a value
   z.NodeInfo.c
   Generating Code...
 Debug\List_Simple_C.obj : warning LNK4042: object specified more than once; extras ignored
