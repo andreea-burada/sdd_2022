@@ -11,14 +11,16 @@
 //#include "zNodeInfo/z.NodeInfo.h"
 //#include "List_Simple/List_Simple_NonC.h"
 //#include "List_Simple/List_Simple_C.h"
-#include "List_Simple/List_Simple_C_Tail.h"
+//#include "List_Simple/List_Simple_C_Tail.h"
+#include "List_Double/List_Double_NonC_HeadTail.h"
 
 void main()
 {
 	// define data structure
 	//SimpleListNonC* head = NULL;
 	//SimpleListC* head = NULL;
-	SimpleListC_Tail* tail = NULL;
+	//SimpleListC_Tail* tail = NULL;
+	DoubleListNonC doubleList = { .head = NULL, .tail = NULL };
 
 	FILE* pFile = fopen(FILE_NAME, "r");
 	char* token = NULL, lineBuffer[LINE_BUFFEER], * sepList = ",\n";
@@ -57,18 +59,26 @@ void main()
 			//tail = insertHead_Val(tail, info);
 			//insertHead_Ref(&tail, info);
 
-			tail = insertTail_Val(tail, info);
+			//tail = insertTail_Val(tail, info);
 			//insertTail_Ref(&tail, info);
+			#pragma endregion
+
+			#pragma region DoubleListNonC
+			//doubleList = insertHead_Val(doubleList, info);
+			//insertHead_Ref(&doubleList, info);
+			//doubleList = insertTail_Val(doubleList, info);
+			insertTail_Ref(&doubleList, info);
 			#pragma endregion
 			size++;
 		}
 		// print data structure
 		//printList(head);
-		printList(tail);
+		//printList(tail);
+		printList(doubleList);
 		
 		// do other data structure specific actions and test
-		int insPos = 10;
-		int delPos = 10;
+		int insPos = 11;
+		int delPos = 1;
 		NodeInfo* dummyInfo = createNodeInfo(10013, "Margaret Sinclair", "Cybersecurity", 23043.12);
 
 		#pragma region SimpleListNonC
@@ -143,10 +153,10 @@ void main()
 		#pragma endregion
 
 		#pragma region SimpleListC_Tail
-		printf("\n---\n");
-		printf("\nHead - ");
-		if (tail)
-			printInfo(tail->pNext->info);
+		//printf("\n---\n");
+		//printf("\nHead - ");
+		//if (tail)
+			//printInfo(tail->pNext->info);
 
 		//printf("\n---\n");
 
@@ -157,21 +167,58 @@ void main()
 		//insertListAfterPos_Ref(&tail, dummyInfo, insPos);
 		//printList(tail);
 
-		printf("\n---\n");
+		//printf("\n---\n");
 
 		//tail = deleteListPos_Val(tail, delPos);
 		//deleteListPos_Ref(&tail, delPos);
 		//printList(head);
 
 		//tail = deleteAllCond_Val(tail, size);
-		deleteAllCond_Ref(&tail, size);
-		printList(tail);
+		//deleteAllCond_Ref(&tail, size);
+		//printList(tail);
+
+		//printf("\n---\n");
+		//printf("\nHead - ");
+		//if (tail)
+			//printInfo(tail->pNext->info);
+		#pragma endregion
+
+		#pragma region DoubleListNonC
+		printf("\n---\n");
+		printf("\nTail - ");
+		if (doubleList.tail)
+		printInfo(doubleList.tail->info);
+		printf("\nPrev Tail - ");
+		if (doubleList.tail->pPrev)
+		printInfo(doubleList.tail->pPrev->info);
 
 		printf("\n---\n");
-		printf("\nHead - ");
-		if (tail)
-			printInfo(tail->pNext->info);
-		#pragma endregion		
+
+		//doubleList = insertListOnPos_Val(doubleList, dummyInfo, insPos);
+		//insertListOnPos_Ref(&doubleList, dummyInfo, insPos);
+
+		//doubleList = insertListAfterPos_Val(doubleList, dummyInfo, insPos);
+		//insertListAfterPos_Ref(&doubleList, dummyInfo, insPos);
+		//printList(doubleList);
+
+		//printf("\n---\n");
+
+		doubleList = deleteListPos_Val(doubleList, delPos);
+		//deleteListPos_Ref(&tail, delPos);
+		printList(doubleList);
+
+		//tail = deleteAllCond_Val(tail, size);
+		//deleteAllCond_Ref(&tail, size);
+		//printList(tail);
+
+		printf("\n---\n");
+		printf("\nTail - ");
+		if (doubleList.tail)
+			printInfo(doubleList.tail->info);
+		printf("\nPrev Tail - ");
+		if (doubleList.tail->pPrev)
+			printInfo(doubleList.tail->pPrev->info);
+		#pragma endregion
 
 	}
 	int a = 2;

@@ -34,6 +34,9 @@
     <ClCompile Include="List_Simple\List_Simple_NonC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="List_Double\List_Double_NonC_HeadTail.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="List_Simple\List_Simple_NonC.h">
@@ -43,6 +46,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="List_Simple\List_Simple_C_Tail.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="List_Double\List_Double_NonC_HeadTail.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,7 @@
 
 #include "../zNodeInfo/z.NodeInfo.h"
 
-/*		-------------- Simple Linked List - Circular --------------*/
+/*		-------------- Simple Linked List - Circular (Tail repr.) --------------*/
 
 // data structure definition
 typedef struct Node {
