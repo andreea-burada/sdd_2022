@@ -52,6 +52,12 @@
     <ClCompile Include="HashTable\HashTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BinaryTree\BinarySearchTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AVL_Tree\AVL_Tree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="List_Simple\List_Simple_NonC.h">
@@ -76,6 +82,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HashTable\HashTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree\BinarySearchTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AVL_Tree\AVL_Tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

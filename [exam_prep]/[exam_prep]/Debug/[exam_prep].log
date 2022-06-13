@@ -1,4 +1,6 @@
-﻿  HashTable.cpp
+﻿  AVL_Tree.cpp
+  BinarySearchTree.cpp
+  HashTable.cpp
   List_Double_NonC_HeadTail.cpp
   List_Simple_C.cpp
   List_Simple_C.h
@@ -9,10 +11,6 @@
   Stack.cpp
   Generating Code...
   Source.c
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\[exam_prep]\HashTable\HashTable.h(64,27): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\[exam_prep]\HashTable\HashTable.h(64,23): warning C4024: 'memset': different types for formal and actual parameter 2
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\[exam_prep]\HashTable\HashTable.h(116,27): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\[exam_prep]\HashTable\HashTable.h(116,23): warning C4024: 'memset': different types for formal and actual parameter 2
   z.NodeInfo.c
   Generating Code...
 Debug\List_Simple_C.obj : warning LNK4042: object specified more than once; extras ignored

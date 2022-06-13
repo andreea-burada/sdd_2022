@@ -16,7 +16,9 @@
 //#include "Stack/Stack.h"
 //#include "Queue/Queue.h"
 //#include "PriorityQueue/PriorityQueue.h"
-#include "HashTable/HashTable.h"
+//#include "HashTable/HashTable.h"
+//#include "BinaryTree/BinarySearchTree.h"
+#include "AVL_Tree/AVL_Tree.h"
 
 void main()
 {
@@ -28,7 +30,9 @@ void main()
 	//Stack *topStack = NULL;
 	//Queue* queueHead = NULL;
 	//PriorityQueue pQueue = { .items = NULL, .size = 0, .nextIndex = 0 };
-	HashTable hashTable = { .items = NULL, .size = 0 };
+	//HashTable hashTable = { .items = NULL, .size = 0 };
+	//BinarySearchTree* bTree = NULL;
+	AVL_Tree* avlTree = NULL;
 
 	FILE* pFile = fopen(FILE_NAME, "r");
 	char* token = NULL, lineBuffer[LINE_BUFFEER], * sepList = ",\n";
@@ -97,9 +101,17 @@ void main()
 			#pragma endregion
 
 			#pragma region HashTable
-			putHashTable(&hashTable, info);
+			//putHashTable(&hashTable, info);
 
-			printHashTable(hashTable);
+			//printHashTable(hashTable);
+			#pragma endregion
+
+			#pragma region BinarySearchTree
+			//insertBST(&bTree, info);
+			#pragma endregion
+
+			#pragma region AVL_Tree
+			insertAVL_Tree(&avlTree, info);
 			#pragma endregion
 
 			size++;
@@ -315,15 +327,44 @@ void main()
 		else
 			printf("\nCould not find node with key \"%s\"\n", searchKey);*/
 
-		printf("\n---\n");
+		/*printf("\n---\n");
 		char* extractKey = "Popa Mihai";
 		NodeInfo* extracted = extractHashTable(&hashTable, extractKey);
 		if (extracted)
 			printInfo(extracted);
 		else
-			printf("\nCould not find node with key \"%s\"\n", extractKey);
+			printf("\nCould not find node with key \"%s\"\n", extractKey);*/
 
-		printHashTable(hashTable);
+		//printHashTable(hashTable);
+		#pragma endregion
+
+		#pragma region BinarySearchTree
+		//deleteBST(&bTree, 10003);
+
+		/*printf("\n\tIn-order: left / root / right\n");
+		inorder_LPR(bTree);*/
+		 
+		/*printf("\n\tPre-order: root / left / right\n");
+		inorder_PLR(bTree);*/
+		
+		/*printf("\n\tPost-order: left / right / root\n");
+		inorder_LRP(bTree);*/
+		#pragma endregion
+
+		#pragma region AVL_Tree
+		//deleteBST(&avlTree, 10003);
+
+		printf("\n\tIn-order: left / root / right\n");
+		inorder_LPR(avlTree);
+
+		/*printf("\n\tPre-order: root / left / right\n");
+		inorder_PLR(avlTree);*/
+
+		/*printf("\n\tPost-order: left / right / root\n");
+		inorder_LRP(avlTree);*/
+
+		printf("\n---\n");
+		printTreeByLevel(avlTree);
 		#pragma endregion
 
 	}
