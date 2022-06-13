@@ -11,7 +11,7 @@ typedef struct PriorityQueue
 	int nextIndex; //next available position to insert
 } PriorityQueue;
 
-/*functions signatures for memory management*/
+/*priority queue specific methods*/
 PriorityQueue putPQ_Val(PriorityQueue, NodeInfo*);
 void putPQ_Ref(PriorityQueue*, NodeInfo*);
 

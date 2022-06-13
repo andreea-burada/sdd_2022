@@ -143,6 +143,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HashTable\HashTable.cpp" />
     <ClCompile Include="List_Double\List_Double_NonC_HeadTail.cpp" />
     <ClCompile Include="List_Simple\List_Simple_C.cpp" />
     <ClCompile Include="List_Simple\List_Simple_C.h" />
@@ -155,6 +156,7 @@
     <ClCompile Include="zNodeInfo\z.NodeInfo.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HashTable\HashTable.h" />
     <ClInclude Include="List_Double\List_Double_NonC_HeadTail.h" />
     <ClInclude Include="List_Simple\List_Simple_C_Tail.h" />
     <ClInclude Include="List_Simple\List_Simple_NonC.h" />

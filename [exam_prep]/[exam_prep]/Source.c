@@ -15,7 +15,8 @@
 //#include "List_Double/List_Double_NonC_HeadTail.h"
 //#include "Stack/Stack.h"
 //#include "Queue/Queue.h"
-#include "PriorityQueue/PriorityQueue.h"
+//#include "PriorityQueue/PriorityQueue.h"
+#include "HashTable/HashTable.h"
 
 void main()
 {
@@ -26,7 +27,8 @@ void main()
 	//DoubleListNonC doubleList = { .head = NULL, .tail = NULL };
 	//Stack *topStack = NULL;
 	//Queue* queueHead = NULL;
-	PriorityQueue pQueue = { .items = NULL, .size = 0, .nextIndex = 0 };
+	//PriorityQueue pQueue = { .items = NULL, .size = 0, .nextIndex = 0 };
+	HashTable hashTable = { .items = NULL, .size = 0 };
 
 	FILE* pFile = fopen(FILE_NAME, "r");
 	char* token = NULL, lineBuffer[LINE_BUFFEER], * sepList = ",\n";
@@ -92,6 +94,12 @@ void main()
 
 			//printf("\n---\n");
 			//printPQ(pQueue);
+			#pragma endregion
+
+			#pragma region HashTable
+			putHashTable(&hashTable, info);
+
+			printHashTable(hashTable);
 			#pragma endregion
 
 			size++;
@@ -296,6 +304,26 @@ void main()
 
 		//printf("\n---\n");
 		//printPQ(pQueue);
+		#pragma endregion
+
+		#pragma region HashTable
+		/*printf("\n---\n");
+		char* searchKey = "";
+		NodeInfo* found = searchHashTable(&hashTable, searchKey);
+		if (found)
+			printInfo(found);
+		else
+			printf("\nCould not find node with key \"%s\"\n", searchKey);*/
+
+		printf("\n---\n");
+		char* extractKey = "Popa Mihai";
+		NodeInfo* extracted = extractHashTable(&hashTable, extractKey);
+		if (extracted)
+			printInfo(extracted);
+		else
+			printf("\nCould not find node with key \"%s\"\n", extractKey);
+
+		printHashTable(hashTable);
 		#pragma endregion
 
 	}

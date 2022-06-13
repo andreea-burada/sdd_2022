@@ -9,3 +9,4 @@ Implemented Data Structures:
 	- Stack
 	- Queue
 	- Priority Queue
+	- Hash Table (Linear Probing)
