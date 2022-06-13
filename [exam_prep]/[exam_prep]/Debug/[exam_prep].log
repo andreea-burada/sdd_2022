@@ -1,3 +1,11 @@
-﻿  Source.c
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\[exam_prep]\List_Double\List_Double_NonC_HeadTail.h(427): warning C4716: 'deleteAllCond_Val': must return a value
+﻿  List_Double_NonC_HeadTail.cpp
+  List_Simple_C.cpp
+  List_Simple_C.h
+  List_Simple_NonC.cpp
+  Generating Code...
+  Source.c
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\[exam_prep]\List_Double\List_Double_NonC_HeadTail.h(428,40): warning C4028: formal parameter 1 different from declaration
+  z.NodeInfo.c
+  Generating Code...
+Debug\List_Simple_C.obj : warning LNK4042: object specified more than once; extras ignored
   [exam_prep].vcxproj -> E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\Debug\[exam_prep].exe

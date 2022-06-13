@@ -78,7 +78,7 @@ void main()
 		
 		// do other data structure specific actions and test
 		int insPos = 11;
-		int delPos = 1;
+		int delPos = 7;
 		NodeInfo* dummyInfo = createNodeInfo(10013, "Margaret Sinclair", "Cybersecurity", 23043.12);
 
 		#pragma region SimpleListNonC
@@ -203,21 +203,26 @@ void main()
 
 		//printf("\n---\n");
 
-		doubleList = deleteListPos_Val(doubleList, delPos);
-		//deleteListPos_Ref(&tail, delPos);
-		printList(doubleList);
+		//doubleList = deleteListPos_Val(doubleList, delPos);
+		//deleteListPos_Ref(&doubleList, delPos);
+		//printList(doubleList);
 
-		//tail = deleteAllCond_Val(tail, size);
-		//deleteAllCond_Ref(&tail, size);
-		//printList(tail);
+		//doubleList = deleteAllCond_Val(doubleList, size);
+		deleteAllCond_Ref(&doubleList, size);
+		printList(doubleList);
 
 		printf("\n---\n");
 		printf("\nTail - ");
-		if (doubleList.tail)
+		if (doubleList.tail) {
 			printInfo(doubleList.tail->info);
-		printf("\nPrev Tail - ");
-		if (doubleList.tail->pPrev)
-			printInfo(doubleList.tail->pPrev->info);
+			printf("\nPrev Tail - ");
+			if (doubleList.tail->pPrev)
+				printInfo(doubleList.tail->pPrev->info);
+			else
+				printf(" No Prev of Tail");
+		}
+		else
+			printf(" No Tail");
 		#pragma endregion
 
 	}

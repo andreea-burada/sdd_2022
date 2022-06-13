@@ -33,7 +33,7 @@ void insertListAfterPos_Ref(DoubleListNonC*, Employee*, int);			// done
 DoubleListNonC deleteListPos_Val(DoubleListNonC, int);		// done
 void deleteListPos_Ref(DoubleListNonC*, int);				// done
 
-DoubleListNonC* deleteAllCond_Val(DoubleListNonC*, int);
+DoubleListNonC deleteAllCond_Val(DoubleListNonC, int);
 void deleteAllCond_Ref(DoubleListNonC**, int);
 
 void printList(DoubleListNonC);
@@ -42,9 +42,11 @@ void printList(DoubleListNonC);
 
 Node* createNode(Employee* info) {
 	Node* node = (Node*)malloc(sizeof(Node));
-	node->info = info;
-	node->pNext = NULL;
-	node->pPrev = NULL;
+	if (node) {
+		node->info = info;
+		node->pNext = NULL;
+		node->pPrev = NULL;
+	}
 	return node;
 }
 bool isEmpty(DoubleListNonC doubleList)
@@ -277,7 +279,10 @@ DoubleListNonC deleteListPos_Val(DoubleListNonC doubleList, int pos) {
 	if (pos == 1) {
 		 // head deletion
 		aux = doubleList.head;
-		doubleList.head->pNext->pPrev = NULL;
+		if (doubleList.head->pNext)
+			doubleList.head->pNext->pPrev = NULL;
+		else
+			doubleList.tail = NULL;
 		doubleList.head = doubleList.head->pNext;
 	}
 	else {
@@ -292,7 +297,8 @@ DoubleListNonC deleteListPos_Val(DoubleListNonC doubleList, int pos) {
 		if (tmp != doubleList.tail) {
 			// deleting a non tail
 			tmp->pPrev->pNext = tmp->pNext;
-			tmp->pNext->pPrev = tmp->pPrev;
+			if (tmp->pNext)
+				tmp->pNext->pPrev = tmp->pPrev;
 			aux = tmp;
 		}
 		else if (tmp == doubleList.tail && index == pos) {
@@ -318,35 +324,39 @@ void deleteListPos_Ref(DoubleListNonC* doubleList, int pos) {
 	if (pos <= 0)
 	{
 		printf("\nPosition cannot be 0 or negative. Canceling deletion...\n");
-		return doubleList;
+		return;
 	}
 
 	Node* aux = NULL;
 	if (pos == 1) {
 		// head deletion
-		aux = doubleList.head;
-		doubleList.head->pNext->pPrev = NULL;
-		doubleList.head = doubleList.head->pNext;
+		aux = doubleList->head;
+		if (doubleList->head->pNext)
+			doubleList->head->pNext->pPrev = NULL;
+		else
+			doubleList->tail = NULL;
+		doubleList->head = doubleList->head->pNext;
 	}
 	else {
 		int index = 1;
-		Node* tmp = doubleList.head;
+		Node* tmp = doubleList->head;
 		while (index < (pos) && tmp->pNext != NULL) {
 			tmp = tmp->pNext;
 			index++;
 		}
 		// redoing the links so that the node that
 		// we want to delete is skipped over
-		if (tmp != doubleList.tail) {
+		if (tmp != doubleList->tail) {
 			// deleting a non tail
 			tmp->pPrev->pNext = tmp->pNext;
-			tmp->pNext->pPrev = tmp->pPrev;
+			if (tmp->pNext)
+				tmp->pNext->pPrev = tmp->pPrev;
 			aux = tmp;
 		}
-		else if (tmp == doubleList.tail && index == pos) {
+		else if (tmp == doubleList->tail && index == pos) {
 			// deleting the tail
 			tmp->pPrev->pNext = NULL;
-			doubleList.tail = tmp->pPrev;
+			doubleList->tail = tmp->pPrev;
 			aux = tmp;
 		}
 		else {
@@ -360,139 +370,112 @@ void deleteListPos_Ref(DoubleListNonC* doubleList, int pos) {
 		free(aux);
 		aux = NULL;
 	}
+}
+
+DoubleListNonC deleteAllCond_Val(DoubleListNonC doubleList, int size)
+{
+	Node* savedNode = doubleList.head;
+	bool deleteConfirm;
+	int loopNo = size;
+
+	for (int i = 1; i <= loopNo; i++)
+	{
+		// we try to delete if the condition is met
+		deleteConfirm = false;
+		if (savedNode) {
+			if (savedNode->info->code % 2 == 0) {
+				if (savedNode == doubleList.head)
+				{
+					savedNode = savedNode->pNext;
+					doubleList = deleteListPos_Val(doubleList, 1);
+					size--;
+					deleteConfirm = true;
+				}
+				else if (savedNode == doubleList.tail)
+				{
+					doubleList = deleteListPos_Val(doubleList, size);
+					size--;
+					deleteConfirm = true;
+				}
+				else 
+				{
+					Node* toDelete = savedNode;
+					size--;
+					deleteConfirm = true;
+					savedNode = toDelete->pNext;
+					// redo links
+					toDelete->pPrev->pNext = toDelete->pNext;
+					if (toDelete->pNext)
+						toDelete->pNext->pPrev = toDelete->pPrev;
+					
+					if (toDelete)
+					{
+						free(toDelete->info->name);
+						free(toDelete->info->dept);
+						free(toDelete->info);
+						free(toDelete);
+					}
+					toDelete = NULL;
+				}
+				
+			}
+		}
+		if (savedNode && deleteConfirm == false)
+			savedNode = savedNode->pNext;
+	}
 	return doubleList;
 }
-
-DoubleListNonC* deleteAllCond_Val(DoubleListNonC* tail, int size)
+void deleteAllCond_Ref(DoubleListNonC* doubleList, int size)
 {
-	//Node* savedTail = tail;
-	//bool deleteConfirm;
-	//// we treat the tail outside the loop
-	//while (savedTail == tail && savedTail->pNext != tail)
-	//{
-	//	if (savedTail->info->code % 2 == 0)
-	//	{
-	//		Node* toDelete = savedTail;
-	//		// redoing the circular link
-	//		Node* tmp = tail->pNext;
-	//		while (tmp->pNext != tail)
-	//			tmp = tmp->pNext;
-	//		tmp->pNext = tmp->pNext->pNext;
+	Node* savedNode = doubleList->head;
+	bool deleteConfirm;
+	int loopNo = size;
 
-	//		tail = tmp;
-	//		savedTail = tail;
+	for (int i = 1; i <= loopNo; i++)
+	{
+		// we try to delete if the condition is met
+		deleteConfirm = false;
+		if (savedNode) {
+			if (savedNode->info->code % 2 == 0) {
+				if (savedNode == doubleList->head)
+				{
+					savedNode = savedNode->pNext;
+					*doubleList = deleteListPos_Val(*doubleList, 1);
+					size--;
+					deleteConfirm = true;
+				}
+				else if (savedNode == doubleList->tail)
+				{
+					*doubleList = deleteListPos_Val(*doubleList, size);
+					size--;
+					deleteConfirm = true;
+				}
+				else
+				{
+					Node* toDelete = savedNode;
+					size--;
+					deleteConfirm = true;
+					savedNode = toDelete->pNext;
+					// redo links
+					toDelete->pPrev->pNext = toDelete->pNext;
+					if (toDelete->pNext)
+						toDelete->pNext->pPrev = toDelete->pPrev;
 
-	//		free(toDelete->info->name);
-	//		free(toDelete->info->dept);
-	//		free(toDelete->info);
-	//		free(toDelete);
-	//		toDelete = NULL;
-	//		size--;
-	//	}
-	//	else
-	//		break;
-	//}
-	//// we check if we only have one node in the structure
-	//if (tail == tail->pNext && tail->info->code % 2 == 0)
-	//{
-	//	// delete the head and make the list null
-	//	free(tail->info->name);
-	//	free(tail->info->dept);
-	//	free(tail->info);
-	//	free(tail);
-	//	tail = NULL;
-	//	return tail;
-	//}
-	//for (int i = 0; i < size - 1; i++)
-	//{
-	//	// we try to delete if the condition is met
-	//	deleteConfirm = false;
-	//	if (savedTail && savedTail->pNext) {
-	//		if (savedTail->pNext->info->code % 2 == 0) {
-	//			Node* toDelete = savedTail->pNext;
-	//			deleteConfirm = true;
+					if (toDelete)
+					{
+						free(toDelete->info->name);
+						free(toDelete->info->dept);
+						free(toDelete->info);
+						free(toDelete);
+					}
+					toDelete = NULL;
+				}
 
-	//			savedTail->pNext = savedTail->pNext->pNext;
-
-	//			if (toDelete)
-	//			{
-	//				free(toDelete->info->name);
-	//				free(toDelete->info->dept);
-	//				free(toDelete->info);
-	//				free(toDelete);
-	//			}
-	//			toDelete = NULL;
-	//		}
-	//	}
-	//	if (savedTail && deleteConfirm == false)
-	//		savedTail = savedTail->pNext;
-	//}
-	//return tail;
-}
-void deleteAllCond_Ref(DoubleListNonC** tail, int size)
-{
-	//Node* savedTail = *tail;
-	//bool deleteConfirm;
-	//// we treat the tail outside the loop
-	//while (savedTail == *tail && savedTail->pNext != *tail)
-	//{
-	//	if (savedTail->info->code % 2 == 0)
-	//	{
-	//		Node* toDelete = savedTail;
-	//		// redoing the circular link
-	//		Node* tmp = (*tail)->pNext;
-	//		while (tmp->pNext != *tail)
-	//			tmp = tmp->pNext;
-	//		tmp->pNext = tmp->pNext->pNext;
-
-	//		*tail = tmp;
-	//		savedTail = *tail;
-
-	//		free(toDelete->info->name);
-	//		free(toDelete->info->dept);
-	//		free(toDelete->info);
-	//		free(toDelete);
-	//		toDelete = NULL;
-	//		size--;
-	//	}
-	//	else
-	//		break;
-	//}
-	//// we check if we only have one node in the structure
-	//if (*tail == (*tail)->pNext && (*tail)->info->code % 2 == 0)
-	//{
-	//	// delete the head and make the list null
-	//	free((*tail)->info->name);
-	//	free((*tail)->info->dept);
-	//	free((*tail)->info);
-	//	free(*tail);
-	//	*tail = NULL;
-	//	return;
-	//}
-	//for (int i = 0; i < size - 1; i++)
-	//{
-	//	// we try to delete if the condition is met
-	//	deleteConfirm = false;
-	//	if (savedTail && savedTail->pNext) {
-	//		if (savedTail->pNext->info->code % 2 == 0) {
-	//			Node* toDelete = savedTail->pNext;
-	//			deleteConfirm = true;
-
-	//			savedTail->pNext = savedTail->pNext->pNext;
-
-	//			if (toDelete)
-	//			{
-	//				free(toDelete->info->name);
-	//				free(toDelete->info->dept);
-	//				free(toDelete->info);
-	//				free(toDelete);
-	//			}
-	//			toDelete = NULL;
-	//		}
-	//	}
-	//	if (savedTail && deleteConfirm == false)
-	//		savedTail = savedTail->pNext;
-	//}
+			}
+		}
+		if (savedNode && deleteConfirm == false)
+			savedNode = savedNode->pNext;
+	}
 }
 
 
