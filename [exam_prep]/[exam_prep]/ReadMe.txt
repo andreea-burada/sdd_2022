@@ -5,3 +5,5 @@ Why? Idk, .c is weird.
 Implemented Data Structures:
 
 	- Simple Linked List
+	- Double Linked List
+	- Stack

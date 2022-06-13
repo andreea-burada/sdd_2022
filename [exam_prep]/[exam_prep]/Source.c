@@ -14,6 +14,7 @@
 //#include "List_Simple/List_Simple_C_Tail.h"
 //#include "List_Double/List_Double_NonC_HeadTail.h"
 //#include "Stack/Stack.h"
+#include "Queue/Queue.h"
 
 void main()
 {
@@ -23,6 +24,7 @@ void main()
 	//SimpleListC_Tail* tail = NULL;
 	//DoubleListNonC doubleList = { .head = NULL, .tail = NULL };
 	//Stack *topStack = NULL;
+	Queue* queueHead = NULL;
 
 	FILE* pFile = fopen(FILE_NAME, "r");
 	char* token = NULL, lineBuffer[LINE_BUFFEER], * sepList = ",\n";
@@ -74,6 +76,11 @@ void main()
 
 			#pragma region Stack
 			//topStack = push_Val(topStack, info);
+			//push_Ref(&topStack, info);
+			#pragma endregion
+
+			#pragma region Queue
+			queueHead = put_Val(queueHead, info);
 			//push_Ref(&topStack, info);
 			#pragma endregion
 			size++;
@@ -246,6 +253,22 @@ void main()
 		//topStack = deleteStackCond_Val(topStack);
 		//deleteStackCond_Ref(&topStack);
 		//printStack(&topStack);
+		#pragma endregion
+
+		#pragma region Stack
+		printQueue(&queueHead);
+
+		//printf("\n---\n");
+
+		//queueHead = deleteQueue_Val(queueHead);
+		//deleteQueue_Ref(&queueHead);
+		//printQueue(&queueHead);
+
+		printf("\n---\n");
+
+		//queueHead = deleteQueueCond_Val(queueHead);
+		deleteQueueCond_Ref(&queueHead);
+		printQueue(&queueHead);
 		#pragma endregion
 
 	}

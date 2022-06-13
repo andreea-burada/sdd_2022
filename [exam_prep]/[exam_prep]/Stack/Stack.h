@@ -119,15 +119,12 @@ Stack* deleteStackCond_Val(Stack* topStack) {
 	if (isEmpty(topStack))
 		printf("\nStack is empty!\n");
 	else {
-		printf("\n// Top\n\n");
 		// extracting the stack to another stack
 		while (!isEmpty(topStack)) {
 			emp = pop(&(topStack));
-			printInfo(emp);
 			push_Ref(&auxStack, emp);
 			//*topStack = push_Val(topStack, emp);
 		}
-		printf("\n// Base\n");
 		// reversing it back
 		while (!isEmpty(auxStack)) {
 			emp = pop(&auxStack);
@@ -153,15 +150,12 @@ void deleteStackCond_Ref(Stack** topStack) {
 	if (isEmpty(*topStack))
 		printf("\nStack is empty!\n");
 	else {
-		printf("\n// Top\n\n");
 		// extracting the stack to another stack
 		while (!isEmpty(*topStack)) {
 			emp = pop(&(*topStack));
-			printInfo(emp);
 			push_Ref(&auxStack, emp);
 			//*topStack = push_Val(*topStack, emp);
 		}
-		printf("\n// Base\n");
 		// reversing it back
 		while (!isEmpty(auxStack)) {
 			emp = pop(&auxStack);
@@ -179,7 +173,6 @@ void deleteStackCond_Ref(Stack** topStack) {
 			}
 		}
 	}
-	return topStack;
 }
 
 
