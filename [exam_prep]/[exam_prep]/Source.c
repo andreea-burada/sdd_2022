@@ -14,7 +14,8 @@
 //#include "List_Simple/List_Simple_C_Tail.h"
 //#include "List_Double/List_Double_NonC_HeadTail.h"
 //#include "Stack/Stack.h"
-#include "Queue/Queue.h"
+//#include "Queue/Queue.h"
+#include "PriorityQueue/PriorityQueue.h"
 
 void main()
 {
@@ -24,7 +25,8 @@ void main()
 	//SimpleListC_Tail* tail = NULL;
 	//DoubleListNonC doubleList = { .head = NULL, .tail = NULL };
 	//Stack *topStack = NULL;
-	Queue* queueHead = NULL;
+	//Queue* queueHead = NULL;
+	PriorityQueue pQueue = { .items = NULL, .size = 0, .nextIndex = 0 };
 
 	FILE* pFile = fopen(FILE_NAME, "r");
 	char* token = NULL, lineBuffer[LINE_BUFFEER], * sepList = ",\n";
@@ -80,9 +82,18 @@ void main()
 			#pragma endregion
 
 			#pragma region Queue
-			queueHead = put_Val(queueHead, info);
+			//queueHead = put_Val(queueHead, info);
 			//push_Ref(&topStack, info);
 			#pragma endregion
+
+			#pragma region PriorityQueue
+			//pQueue = putPQ_Val(pQueue, info);
+			//putPQ_Ref(&pQueue, info);
+
+			//printf("\n---\n");
+			//printPQ(pQueue);
+			#pragma endregion
+
 			size++;
 		}
 		// print data structure
@@ -255,8 +266,8 @@ void main()
 		//printStack(&topStack);
 		#pragma endregion
 
-		#pragma region Stack
-		printQueue(&queueHead);
+		#pragma region Queue
+		//printQueue(&queueHead);
 
 		//printf("\n---\n");
 
@@ -264,11 +275,27 @@ void main()
 		//deleteQueue_Ref(&queueHead);
 		//printQueue(&queueHead);
 
-		printf("\n---\n");
+		//printf("\n---\n");
 
 		//queueHead = deleteQueueCond_Val(queueHead);
-		deleteQueueCond_Ref(&queueHead);
-		printQueue(&queueHead);
+		//deleteQueueCond_Ref(&queueHead);
+		//printQueue(&queueHead);
+		#pragma endregion
+
+		#pragma region PriorityQueue
+		//printf("\n---\n");
+		//printPQ(pQueue);
+
+		/*NodeInfo* peeked = peekPQ(pQueue);
+		printf("\nMax Priority: ");
+		printInfo(peeked);*/
+
+		//NodeInfo* gotten = getPQ(&pQueue);
+		//printf("\nMax Priority: ");
+		//printInfo(gotten);
+
+		//printf("\n---\n");
+		//printPQ(pQueue);
 		#pragma endregion
 
 	}

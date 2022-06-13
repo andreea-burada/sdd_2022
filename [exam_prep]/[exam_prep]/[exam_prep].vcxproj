@@ -146,7 +146,9 @@
     <ClCompile Include="List_Double\List_Double_NonC_HeadTail.cpp" />
     <ClCompile Include="List_Simple\List_Simple_C.cpp" />
     <ClCompile Include="List_Simple\List_Simple_C.h" />
+    <ClCompile Include="List_Simple\List_Simple_C_Tail.cpp" />
     <ClCompile Include="List_Simple\List_Simple_NonC.cpp" />
+    <ClCompile Include="PriorityQueue\PriorityQueue.cpp" />
     <ClCompile Include="Queue\Queue.cpp" />
     <ClCompile Include="Source.c" />
     <ClCompile Include="Stack\Stack.cpp" />
@@ -156,6 +158,7 @@
     <ClInclude Include="List_Double\List_Double_NonC_HeadTail.h" />
     <ClInclude Include="List_Simple\List_Simple_C_Tail.h" />
     <ClInclude Include="List_Simple\List_Simple_NonC.h" />
+    <ClInclude Include="PriorityQueue\PriorityQueue.h" />
     <ClInclude Include="Queue\Queue.h" />
     <ClInclude Include="Stack\Stack.h" />
     <ClInclude Include="zNodeInfo\z.NodeInfo.h" />
