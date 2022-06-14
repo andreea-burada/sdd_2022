@@ -365,6 +365,11 @@ void main()
 
 		printf("\n---\n");
 		printTreeByLevel(avlTree);
+
+		avlTree = deleteNode(avlTree, 10004);
+
+		printf("\n\tIn-order: left / root / right\n");
+		inorder_LPR(avlTree);
 		#pragma endregion
 
 	}

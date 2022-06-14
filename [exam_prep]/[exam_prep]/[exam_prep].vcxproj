@@ -160,13 +160,19 @@
   <ItemGroup>
     <ClInclude Include="AVL_Tree\AVL_Tree.h" />
     <ClInclude Include="BinaryTree\BinarySearchTree.h" />
+    <ClInclude Include="BinaryTree\BinaryTree.h" />
+    <ClInclude Include="Graph\Graph_Adj_List.h" />
     <ClInclude Include="HashTable\HashTable.h" />
+    <ClInclude Include="HashTable\HashTable_Chain.h" />
+    <ClInclude Include="List_Double\List_Double_C_Head.h" />
     <ClInclude Include="List_Double\List_Double_NonC_HeadTail.h" />
     <ClInclude Include="List_Simple\List_Simple_C_Tail.h" />
     <ClInclude Include="List_Simple\List_Simple_NonC.h" />
     <ClInclude Include="PriorityQueue\PriorityQueue.h" />
     <ClInclude Include="Queue\Queue.h" />
+    <ClInclude Include="Queue\Queue_Array.h" />
     <ClInclude Include="Stack\Stack.h" />
+    <ClInclude Include="Stack\Stack_Array.h" />
     <ClInclude Include="zNodeInfo\z.NodeInfo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -4,9 +4,13 @@ Why? Idk, .c is weird.
 
 Implemented Data Structures:
 
-	- Simple Linked List
-	- Double Linked List
-	- Stack
-	- Queue
+	- Simple Linked List (non-circ & circ)
+	- Double Linked List (non-circ & circ)
+	- Stack (+ w/ Array)
+	- Queue (+ w/Array)
 	- Priority Queue
-	- Hash Table (Linear Probing)
+	- Hash Table (Linear Probing & Chaining)
+	- Binary Tree
+	- Binary Search Tree
+	- AVL
+	- Graph (Adj. Lists)

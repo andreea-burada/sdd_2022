@@ -1,3 +1,4 @@
-﻿  Solution.c
+﻿E:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(514,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (DataStructuresExam1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Solution.c
 E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DataStructuresExam1\Solution.c(126,12): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  DataStructuresExam1.vcxproj -> E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\Debug\DataStructuresExam1.exe
+  DataStructuresExam1.vcxproj -> E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\Debug\DataStructuresExam2020.exe
