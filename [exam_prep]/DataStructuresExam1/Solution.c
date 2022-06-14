@@ -27,7 +27,7 @@ the binary search tree structure
 #include <stdbool.h>
 #include "minmax.h"
 
-typedef enum FloorNo { I = 1, II = 2, III = 3, IV = 4, V = 5, VI = 6, VII = 7, VIII = 8, IX = 9, X = 10 } FloorNo;
+typedef enum FloorNo { XO = 0, I = 1, II = 2, III = 3, IV = 4, V = 5, VI = 6, VII = 7, VIII = 8, IX = 9, X = 10 } FloorNo;
 
 typedef struct Room
 {
@@ -74,7 +74,7 @@ void printTreeByLevel(BinarySearchTree*);
 void printLevel(BinarySearchTree*, int);
 short height(BinarySearchTree*);
 
-void printByFloor(BinarySearchTree*);
+void printByFloor(BinarySearchTree*, FloorNo*, FloorNo*);
 
 void main()
 {
@@ -162,8 +162,9 @@ void main()
 
 		printf("\n---\n\n");
 		printTreeByLevel(bTree);*/
-
-		printByFloor(bTree);
+		printf("\n---\n");
+		FloorNo f1 = XO, f2 = XO;
+		printByFloor(bTree, &f1, &f2);
 	}
 	else
 	{
@@ -267,17 +268,19 @@ short height(BinarySearchTree* root)
 		return 0;
 }
 
-void printByFloor(BinarySearchTree* root)
+void printByFloor(BinarySearchTree* root, FloorNo* currentF, FloorNo* prevF)
 {
 	if (root)
 	{
-		printByFloor(root->leftChild);
-		
-		if (root->leftChild)
-			if (root->info->floorNo != root->leftChild->info->floorNo)
-				printf("\n\nFloor %2d\n---\n", root->info->floorNo);
+		printByFloor(root->leftChild, &(*currentF), &(*prevF));
+		*currentF = root->info->floorNo;
+		if (*currentF != *prevF)
+		{
+			printf("\n\nFloor %2d\n---\n", root->info->floorNo);
+			*prevF = *currentF;
+		}
 		printInfo(root->info);
-		printByFloor(root->rightChild);
+		printByFloor(root->rightChild, &(*currentF), &(*prevF));
 	}
 }
 
