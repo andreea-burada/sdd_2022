@@ -172,21 +172,21 @@ void main()
 			deleteBST(&bTree, bTree->info->idEvent);
 		}
 		if (bTree == NULL)
-			printf("\nbTree BST is empty");
+			printf("\nbTree BST is empty\n");
 
 		while (evenTree)
 		{
 			deleteBST(&evenTree, evenTree->info->idEvent);
 		}
 		if (evenTree == NULL)
-			printf("\nevenTree BST is empty");
+			printf("\nevenTree BST is empty\n");
 
 		while (oddTree)
 		{
 			deleteBST(&oddTree, oddTree->info->idEvent);
 		}
 		if (oddTree == NULL)
-			printf("\noddTree BST is empty");
+			printf("\noddTree BST is empty\n");
 
 		//freeing the two arrays
 		if (arrayOfReservations)
@@ -473,7 +473,7 @@ void logicalDeletion(BinarySearchTree** root, BinarySearchTree** leftSubTree)
 		(*root)->info = (*leftSubTree)->info;
 		BinarySearchTree* aux = (*leftSubTree);
 		(*leftSubTree) = (*leftSubTree)->leftChild;
-		free(tmp->eventDate);
+		//free(tmp->eventDate);
 		free(tmp->eventName);
 		free(tmp->clientName);
 		free(tmp);
