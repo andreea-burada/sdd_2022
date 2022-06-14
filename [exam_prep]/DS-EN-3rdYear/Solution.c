@@ -23,10 +23,8 @@ structures, based on one of the optional attributes defined by you. The chosen a
 in order to be able to split the main tree into two complementary structures. The resulted structures are to be returned in
 main() and their content displayed at the console.
 
-Write and call the function for transforming the BST structure from the 1) requirement, into two complementary BST
-structures, based on one of the optional attributes defined by you. The chosen attribute should have binary significance
-in order to be able to split the main tree into two complementary structures. The resulted structures are to be returned in
-main() and their content displayed at the console.
+Write and call the functions that free the main structure, 2xBST and 2xArrays, as well as all the auxiliary structures
+used in the implementation of the requirements (if applicable).
 */
 
 #include "stdio.h"
