@@ -18,6 +18,10 @@ on the student id, given as a parameter
 Write and call the function to transform the list structure into a binary search tree using the evaluation id field.
 The function will return in main() the root of the tree. The content of the tree must be displayed using the inorder
 traversal.
+
+Write and call the function to transform the tree structures into the left child - right sibling representation model.
+The function will return in main() the arrays that are specific to the representation of the binary search tree.
+The content of the arrays must be displayed according to the following model: NODE <-> LIST_OF_DESCENDANTS
 */
 
 #include "stdio.h"
@@ -55,7 +59,8 @@ typedef struct EvalNoArray
 
 NodeInfo* createNodeInfo(int, int, char*, int, double);
 void printInfo(NodeInfo*);
-
+SimpleListC_Tail* createNode(NodeInfo*);
+BinaryNode* createNode_BST(NodeInfo*);
 SimpleListC_Tail* insertHead_Val(SimpleListC_Tail*, NodeInfo*);
 
 
@@ -73,9 +78,28 @@ SimpleListC_Tail* deleteListPos_Val(SimpleListC_Tail*, int);
 SimpleListC_Tail* deleteAllCond_Val(SimpleListC_Tail*, int, int);
 
 
+
 void printList(SimpleListC_Tail*);
 
+void printInfo(NodeInfo*);
+
+void insertBST(BinarySearchTree**, NodeInfo*);
+
+void deleteBST(BinarySearchTree**, int);
+void logicalDeletion(BinarySearchTree**, BinarySearchTree**);
+
+void inorder_LPR(BinarySearchTree*);
+void inorder_PLR(BinarySearchTree*);
+void inorder_LRP(BinarySearchTree*);
+
+void printTreeByLevel(BinarySearchTree*);
+void printLevel(BinarySearchTree*, int);
+short height(BinarySearchTree*);
+
+
 EvalNoArray* arrayTotalEvals(SimpleListC_Tail*, int*);
+
+BinarySearchTree* listToBST(SimpleListC_Tail*);
 
 void main()
 {
@@ -127,12 +151,44 @@ void main()
 
 		printf("\n---\n");
 		printList(tail);
+
+		BinarySearchTree* bTree = listToBST(tail);
+
+		printf("\n--- List to Tree ---\n\n");
+
+		inorder_LPR(bTree);
 	}
 	else
 	{
 		printf("File \"%s\" could not be opened.\n", FILE_NAME);
 	}
 	int a = 2;
+}
+
+
+BinarySearchTree* listToBST(SimpleListC_Tail* tail)
+{
+	BinarySearchTree* bTree = NULL;
+	if (tail)
+	{
+		if (tail == tail->pNext)
+		{
+			insertBST(&bTree, tail->info);
+		}
+		else
+		{
+			// more than one element in the array
+			SimpleListC_Tail* rememberTail = tail;
+			insertBST(&bTree, tail->info);
+			tail = tail->pNext;
+			while (tail != rememberTail)
+			{
+				insertBST(&bTree, tail->info);
+				tail = tail->pNext;
+			}	
+		}
+	}
+	return bTree;
 }
 
 
@@ -493,3 +549,115 @@ void printInfo(NodeInfo* info)
 		printf("No data to print!");
 }
 
+BinarySearchTree* createNode_BST(NodeInfo* info)
+{
+	BinarySearchTree* node = (BinarySearchTree*)malloc(sizeof(BinarySearchTree));
+	node->info = info;
+	node->leftChild = node->rightChild = NULL;
+	return node;
+}
+
+
+void insertBST(BinarySearchTree** root, NodeInfo* info)
+{
+	if (*root == NULL)
+	{
+		*root = createNode_BST(info);
+	}
+	else
+	{
+		int rootKey = (*root)->info->evaluationId;
+		int infoKey = info->evaluationId;
+		if (rootKey > infoKey)
+			insertBST(&(*root)->leftChild, info);
+		else if (rootKey < infoKey)
+			insertBST(&(*root)->rightChild, info);
+		else
+			(*root)->info = info;
+	}
+}
+
+
+
+void deleteBST(BinarySearchTree** root, int key)
+{
+	if (*root != NULL)
+	{
+		int rootKey = (*root)->info->evaluationId;
+		if (rootKey > key)
+			deleteBST(&(*root)->leftChild, key);
+		else if (rootKey < key)
+			deleteBST(&(*root)->rightChild, key);
+		else
+		{
+			if ((*root)->leftChild == NULL && (*root)->rightChild == NULL)
+			{
+				free((*root)->info->examName);
+				free((*root)->info);
+				free((*root));
+				*root = NULL;
+			}
+			else if ((*root)->leftChild == NULL || (*root)->rightChild == NULL)
+			{
+				BinarySearchTree* desc = NULL;
+				if ((*root)->leftChild)
+					desc = (*root)->leftChild;
+				else
+					desc = (*root)->rightChild;
+				free((*root)->info->examName);
+				free((*root)->info);
+				free((*root));
+				*root = desc;
+			}
+			else
+				logicalDeletion(root, &(*root)->leftChild);
+		}
+	}
+}
+void logicalDeletion(BinarySearchTree** root, BinarySearchTree** leftSubTree)
+{
+	if ((*leftSubTree)->rightChild)
+		logicalDeletion(root, &(*leftSubTree)->rightChild);
+	else
+	{
+		NodeInfo* tmp = (*root)->info;
+		(*root)->info = (*leftSubTree)->info;
+		BinarySearchTree* aux = (*leftSubTree);
+		(*leftSubTree) = (*leftSubTree)->leftChild;
+		free(tmp->examName);
+		free(tmp);
+		free(aux);
+	}
+}
+
+
+
+void inorder_LPR(BinarySearchTree* root) {
+
+	if (root)
+	{
+		inorder_LPR(root->leftChild);
+		printInfo(root->info);
+		inorder_LPR(root->rightChild);
+	}
+}
+// printing the root first then in ascending order
+void inorder_PLR(BinarySearchTree* root) {
+
+	if (root)
+	{
+		printInfo(root->info);
+		inorder_PLR(root->leftChild);
+		inorder_PLR(root->rightChild);
+	}
+}
+// printing in descending order
+void inorder_LRP(BinarySearchTree* root) {
+
+	if (root)
+	{
+		inorder_LRP(root->leftChild);
+		inorder_LRP(root->rightChild);
+		printInfo(root->info);
+	}
+}
