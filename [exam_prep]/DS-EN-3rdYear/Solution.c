@@ -214,29 +214,60 @@ void main()
 
 
 // splitting the bst based on even and odd no. of guests
+//void splitBST(BinarySearchTree** root, BinarySearchTree** evenTree, BinarySearchTree** oddTree)
+//{
+//	
+//	// save all nodes in an array
+//	BinaryNode** arrayOfNodes = NULL;
+//	int arrayNodesSize = 0;
+//	saveNodes(&arrayOfNodes, *root, &arrayNodesSize);
+//	// reset children of nodes
+//	for (int i = 0; i < arrayNodesSize; i++)
+//	{
+//		arrayOfNodes[i]->leftChild = NULL;
+//		arrayOfNodes[i]->rightChild = NULL;
+//		// insert it in either even or odd tree
+//		if (arrayOfNodes[i]->info->noPeople % 2 == 0)
+//		{
+//			insertSubTree(&(*evenTree), arrayOfNodes[i]);
+//		}
+//		else
+//		{
+//			insertSubTree(&(*oddTree), arrayOfNodes[i]);
+//		}
+//	}
+//	free(arrayOfNodes);
+//	*root = NULL;
+//}
+
+// splitting without array
 void splitBST(BinarySearchTree** root, BinarySearchTree** evenTree, BinarySearchTree** oddTree)
 {
-	
-	// save all nodes in an array
-	BinaryNode** arrayOfNodes = NULL;
-	int arrayNodesSize = 0;
-	saveNodes(&arrayOfNodes, *root, &arrayNodesSize);
-	// reset children of nodes
-	for (int i = 0; i < arrayNodesSize; i++)
-	{
-		arrayOfNodes[i]->leftChild = NULL;
-		arrayOfNodes[i]->rightChild = NULL;
+	if (*root) {
+		// save all nodes in an array
+		BinaryNode* lChild = NULL, * rChild = NULL;
+		int arrayNodesSize = 0;
+
 		// insert it in either even or odd tree
-		if (arrayOfNodes[i]->info->noPeople % 2 == 0)
+		if ((*root)->info->noPeople % 2 == 0)
 		{
-			insertSubTree(&(*evenTree), arrayOfNodes[i]);
+			lChild = (*root)->leftChild;
+			rChild = (*root)->rightChild;
+			(*root)->leftChild = (*root)->rightChild = NULL;
+			insertSubTree(&(*evenTree), *root);
 		}
 		else
 		{
-			insertSubTree(&(*oddTree), arrayOfNodes[i]);
+			lChild = (*root)->leftChild;
+			rChild = (*root)->rightChild;
+			(*root)->leftChild = (*root)->rightChild = NULL;
+			insertSubTree(&(*oddTree), *root);
 		}
+		splitBST(&lChild, &(*evenTree), &(*oddTree));
+		splitBST(&rChild, &(*evenTree), &(*oddTree));
 	}
-	free(arrayOfNodes);
+	
+	//free(arrayOfNodes);
 	*root = NULL;
 }
 void saveNodes(BinaryNode*** arrayOfNodes, BinarySearchTree* root, int* size)
