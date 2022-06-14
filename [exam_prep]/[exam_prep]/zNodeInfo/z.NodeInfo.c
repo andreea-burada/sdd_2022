@@ -3,7 +3,7 @@
 // creating a NodeInfo*
 NodeInfo* createNodeInfo(short code, char* name, char* dept, double salary)
 {
-	struct Employee* emp = (NodeInfo*)malloc(sizeof(NodeInfo));
+	Employee* emp = (NodeInfo*)malloc(sizeof(NodeInfo));
 	if (emp != NULL)
 	{
 		emp->code = code;

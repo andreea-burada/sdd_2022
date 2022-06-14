@@ -1,0 +1,7 @@
+﻿  Solution.c
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(89,12): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(184,28): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(184,24): warning C4024: 'memset': different types for formal and actual parameter 2
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(239,27): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(239,23): warning C4024: 'memset': different types for formal and actual parameter 2
+  DS-EN-3rdYear.vcxproj -> E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\Debug\DS-EN-3rdYear.exe
