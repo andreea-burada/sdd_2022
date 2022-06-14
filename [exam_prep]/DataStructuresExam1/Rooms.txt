@@ -1,0 +1,12 @@
+V,12,Deluxe,120.3
+VI,14,Standard,70.9
+II,4,King,224.2
+III,7,Standard,123.4
+X,15,Infinity Pool,450.8
+III,11,Deluxe,130.2
+VI,8,Double,192.4
+I,2,Standard,92.1
+VIII,10,Twin,123.2
+II,12,Double,197.21
+IX,9,Deluxe,218.32
+III,2,Deluxe,120.5

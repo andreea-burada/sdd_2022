@@ -1,11 +1,11 @@
 ﻿  Solution.c
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(104,12): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(260,70): warning C4133: '=': incompatible types - from 'BinaryNode **' to 'NodeInfo **'
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(262,26): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(262,22): warning C4024: 'memset': different types for formal and actual parameter 2
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(265,29): warning C4133: '=': incompatible types - from 'NodeInfo **' to 'BinaryNode **'
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(329,28): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(329,24): warning C4024: 'memset': different types for formal and actual parameter 2
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(384,27): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
-E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(384,23): warning C4024: 'memset': different types for formal and actual parameter 2
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(102,12): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(258,70): warning C4133: '=': incompatible types - from 'BinaryNode **' to 'NodeInfo **'
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(260,26): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(260,22): warning C4024: 'memset': different types for formal and actual parameter 2
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(263,29): warning C4133: '=': incompatible types - from 'NodeInfo **' to 'BinaryNode **'
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(327,28): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(327,24): warning C4024: 'memset': different types for formal and actual parameter 2
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(382,27): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DS-EN-3rdYear\Solution.c(382,23): warning C4024: 'memset': different types for formal and actual parameter 2
   DS-EN-3rdYear.vcxproj -> E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\Debug\DS-EN-3rdYear.exe
