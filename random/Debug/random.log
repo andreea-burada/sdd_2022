@@ -1,3 +1,0 @@
-﻿  testing.c
-E:\Code Projects\GitHubRepos\sdd_2022\random\testing.c(190): warning C4716: 'insertTail': must return a value
-  random.vcxproj -> E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\Debug\random.exe
