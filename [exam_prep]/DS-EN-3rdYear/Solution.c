@@ -22,6 +22,11 @@ Write and call the function for transforming the BST structure from the 1) requi
 structures, based on one of the optional attributes defined by you. The chosen attribute should have binary significance
 in order to be able to split the main tree into two complementary structures. The resulted structures are to be returned in
 main() and their content displayed at the console.
+
+Write and call the function for transforming the BST structure from the 1) requirement, into two complementary BST
+structures, based on one of the optional attributes defined by you. The chosen attribute should have binary significance
+in order to be able to split the main tree into two complementary structures. The resulted structures are to be returned in
+main() and their content displayed at the console.
 */
 
 #include "stdio.h"
@@ -72,6 +77,11 @@ void inorder_LRP(BinarySearchTree*);
 void arrayReservations(NodeInfo***, BinarySearchTree*, char*, int*);
 void arrayTotalCost(TotalCost**, BinarySearchTree*, int*);
 void arrayCalculateCost4Client(float*, BinarySearchTree*, char*);
+
+void splitBST(BinarySearchTree**, BinarySearchTree**, BinarySearchTree**);
+void saveNodes(BinaryNode***, BinarySearchTree*, int*);
+void insertSubTree(BinarySearchTree**, BinaryNode*);
+
 
 void main()
 {
@@ -146,10 +156,138 @@ void main()
 		{
 			printf("Client Name: %-20s; Total Cost: %.3f\n", arrayOfCosts[i].clientName, arrayOfCosts[i].totalCost);
 		}
+
+		BinarySearchTree* evenTree = NULL, * oddTree = NULL;
+		splitBST(&bTree, &evenTree, &oddTree);
+
+		printf("\n\tIn-order: left / root / right\n");
+		inorder_LPR(evenTree);
+
+		printf("\n\tIn-order: left / root / right\n");
+		inorder_LPR(oddTree);
+
+		// free-ing memory if necessarry
+		while (bTree)
+		{
+			deleteBST(&bTree, bTree->info->idEvent);
+		}
+		if (bTree == NULL)
+			printf("\nbTree BST is empty");
+
+		while (evenTree)
+		{
+			deleteBST(&evenTree, evenTree->info->idEvent);
+		}
+		if (evenTree == NULL)
+			printf("\nevenTree BST is empty");
+
+		while (oddTree)
+		{
+			deleteBST(&oddTree, oddTree->info->idEvent);
+		}
+		if (oddTree == NULL)
+			printf("\noddTree BST is empty");
+
+		//freeing the two arrays
+		if (arrayOfReservations)
+		{
+			for (int i = 0; i < arraySize; i++)
+			{
+				free(arrayOfReservations[i]->clientName);
+				free(arrayOfReservations[i]->eventName);
+				free(arrayOfReservations[i]);
+			}
+			free(arrayOfReservations);
+			arrayOfReservations = NULL;
+		}
+
+		if (arrayOfCosts)
+		{
+			for (int i = 0; i < arrayCostSize; i++)
+			{
+				free(arrayOfCosts[i].clientName);
+			}
+			free(arrayOfCosts);
+			arrayOfCosts = NULL;
+		}
 	}
 	int a = 2;
 }
 
+
+// splitting the bst based on even and odd no. of guests
+void splitBST(BinarySearchTree** root, BinarySearchTree** evenTree, BinarySearchTree** oddTree)
+{
+	
+	// save all nodes in an array
+	BinaryNode** arrayOfNodes = NULL;
+	int arrayNodesSize = 0;
+	saveNodes(&arrayOfNodes, *root, &arrayNodesSize);
+	// reset children of nodes
+	for (int i = 0; i < arrayNodesSize; i++)
+	{
+		arrayOfNodes[i]->leftChild = NULL;
+		arrayOfNodes[i]->rightChild = NULL;
+		// insert it in either even or odd tree
+		if (arrayOfNodes[i]->info->noPeople % 2 == 0)
+		{
+			insertSubTree(&(*evenTree), arrayOfNodes[i]);
+		}
+		else
+		{
+			insertSubTree(&(*oddTree), arrayOfNodes[i]);
+		}
+	}
+	free(arrayOfNodes);
+	*root = NULL;
+}
+void saveNodes(BinaryNode*** arrayOfNodes, BinarySearchTree* root, int* size)
+{
+	if (root)
+	{
+		// if the condition is met -> add it to the array
+		if (*arrayOfNodes == NULL)
+		{
+			*arrayOfNodes = (BinaryNode**)malloc(sizeof(BinaryNode*));
+			//memset(arrayRes, NULL, sizeof(NodeInfo**) * (*size + 1));
+			(*arrayOfNodes)[0] = root;
+			*size = 1;
+		}
+		else
+		{
+			// resizing the array
+			NodeInfo** newArray;
+			newArray = (BinaryNode**)malloc(sizeof(BinaryNode*) * (*size + 1));
+			if (newArray) {
+				memset(newArray, NULL, sizeof(BinaryNode*) * (*size + 1));
+				memcpy(newArray, *arrayOfNodes, sizeof(BinaryNode*) * (*size));
+				free(*arrayOfNodes);
+				*arrayOfNodes = newArray;
+				(*arrayOfNodes)[*size] = root;
+				*size += 1;
+			}
+		}
+		saveNodes(&(*arrayOfNodes), root->leftChild, &(*size));
+		saveNodes(&(*arrayOfNodes), root->rightChild, &(*size));
+	}
+}
+
+void insertSubTree(BinarySearchTree** root, BinaryNode* toAdd)
+{
+	if (*root == NULL)
+	{
+		*root = toAdd;
+	}
+	else
+	{
+		if ((*root)->info->idEvent > toAdd->info->idEvent)
+			insertSubTree(&(*root)->leftChild, toAdd);
+		else if ((*root)->info->idEvent < toAdd->info->idEvent)
+			insertSubTree(&(*root)->rightChild, toAdd);
+		else
+			(*root) = toAdd;
+	}
+}
 
 void arrayTotalCost(TotalCost** totalCostArray, BinarySearchTree* root, int* size)
 {
@@ -175,10 +313,12 @@ void arrayTotalCost(TotalCost** totalCostArray, BinarySearchTree* root, int* siz
 				{
 					*totalCostArray = (TotalCost*)malloc(sizeof(TotalCost));
 					//memset(arrayRes, NULL, sizeof(NodeInfo**) * (*size + 1));
-					(*totalCostArray)[0].clientName = (char*)malloc(strlen(root->info->clientName) + 1);
-					strcpy((*totalCostArray)[0].clientName, root->info->clientName);
-					(*totalCostArray)[0].totalCost = currentTotalCost;
-					*size = 1;
+					if (*totalCostArray) {
+						(*totalCostArray)[0].clientName = (char*)malloc(strlen(root->info->clientName) + 1);
+						strcpy((*totalCostArray)[0].clientName, root->info->clientName);
+						(*totalCostArray)[0].totalCost = currentTotalCost;
+						*size = 1;
+					}	
 				}
 				else
 				{
@@ -297,7 +437,7 @@ void deleteBST(BinarySearchTree** root, int key)
 		{
 			if ((*root)->leftChild == NULL && (*root)->rightChild == NULL)
 			{
-				free((*root)->info->eventDate);
+				//free((*root)->info->eventDate);
 				free((*root)->info->eventName);
 				free((*root)->info->clientName);
 				free((*root)->info);
@@ -311,7 +451,7 @@ void deleteBST(BinarySearchTree** root, int key)
 					desc = (*root)->leftChild;
 				else
 					desc = (*root)->rightChild;
-				free((*root)->info->eventDate);
+				//free((*root)->info->eventDate);
 				free((*root)->info->eventName);
 				free((*root)->info->clientName);
 				free((*root)->info);

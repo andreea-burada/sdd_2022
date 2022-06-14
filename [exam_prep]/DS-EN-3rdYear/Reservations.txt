@@ -1,13 +1,7 @@
 101,1000.00,Popescu Martin,01/02/2023,Wedding,130
-102,1650.45,Smith Jones,04/12/2022,Birthday Party,32
 103,1345.29,Anastasie Pavel,05/09/2023,Party,70
-104,4235.23,Boromir Lucian,14/04/2023,Party,45
 105,5756.65,Alupei Paul,04/09/2022,Party,50
-106,7642.01,Johnson Greg,23/11/2022,Wedding,170
-107,1423.09,Kingston Fred,11/07/2022,Birthday Party,43
-108,1423.09,Ureche George,01/01/2024,Party,13
+107,1423.09,Kingston Fred,11/07/2022,Birthday Party,40
 109,1234.50,Mircea Horia,09/05/2024,Wedding,250
-110,3768.09,Popescu Codrin,17/09/2022,Celebration,90
 111,9867.45,Macedon Julius,18/12/2022,Anniversary,350
-112,2783.78,Mitica Mitica,17/09/2022,Party,15
-113,1500.00,Popescu Martin,13/07/2022,Party,25
+113,1500.00,Popescu Martin,13/07/2022,Party,20
