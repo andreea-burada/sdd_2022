@@ -1,0 +1,4 @@
+﻿  Solution.c
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DataStructuresExam2021\Solution.c(175,28): warning C4047: 'function': 'int' differs in levels of indirection from 'void *'
+E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\DataStructuresExam2021\Solution.c(175,24): warning C4024: 'memset': different types for formal and actual parameter 2
+  DataStructuresExam2021.vcxproj -> E:\Code Projects\GitHubRepos\sdd_2022\[exam_prep]\Debug\DataStructuresExam2021.exe

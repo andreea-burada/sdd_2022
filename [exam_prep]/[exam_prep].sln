@@ -7,7 +7,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "[exam_prep]", "[exam_prep]\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DS-EN-3rdYear", "DS-EN-3rdYear\DS-EN-3rdYear.vcxproj", "{BBFBC192-AC09-4768-885C-E803879EE8EF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructuresExam1", "DataStructuresExam1\DataStructuresExam1.vcxproj", "{3D453AE5-74E9-41DD-8C34-5A2896C2CAA6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructuresExam2020", "DataStructuresExam1\DataStructuresExam1.vcxproj", "{3D453AE5-74E9-41DD-8C34-5A2896C2CAA6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructuresExam2021", "DataStructuresExam2021\DataStructuresExam2021.vcxproj", "{3675F585-2CEA-4033-894E-1C7F12AA9291}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,14 @@ Global
 		{3D453AE5-74E9-41DD-8C34-5A2896C2CAA6}.Release|x64.Build.0 = Release|x64
 		{3D453AE5-74E9-41DD-8C34-5A2896C2CAA6}.Release|x86.ActiveCfg = Release|Win32
 		{3D453AE5-74E9-41DD-8C34-5A2896C2CAA6}.Release|x86.Build.0 = Release|Win32
+		{3675F585-2CEA-4033-894E-1C7F12AA9291}.Debug|x64.ActiveCfg = Debug|x64
+		{3675F585-2CEA-4033-894E-1C7F12AA9291}.Debug|x64.Build.0 = Debug|x64
+		{3675F585-2CEA-4033-894E-1C7F12AA9291}.Debug|x86.ActiveCfg = Debug|Win32
+		{3675F585-2CEA-4033-894E-1C7F12AA9291}.Debug|x86.Build.0 = Debug|Win32
+		{3675F585-2CEA-4033-894E-1C7F12AA9291}.Release|x64.ActiveCfg = Release|x64
+		{3675F585-2CEA-4033-894E-1C7F12AA9291}.Release|x64.Build.0 = Release|x64
+		{3675F585-2CEA-4033-894E-1C7F12AA9291}.Release|x86.ActiveCfg = Release|Win32
+		{3675F585-2CEA-4033-894E-1C7F12AA9291}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
