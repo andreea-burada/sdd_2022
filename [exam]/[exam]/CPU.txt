@@ -1,0 +1,11 @@
+Task Reload,4,64,5
+Open Browser,2,1024,12
+Copy Text,5,32,2
+Paste Text,3,16,3
+Reboot,1,256,63
+Launch Program,2,512,37
+Restart Browser,3,8,13
+Copy Clipboard,1,16,27
+Screenshot,1,14,27
+Paste Clipboard,5,64,8
+Refresh,2,256,19

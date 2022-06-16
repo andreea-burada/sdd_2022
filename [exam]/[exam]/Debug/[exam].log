@@ -1,0 +1,19 @@
+﻿  Source.c
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(95,48): warning C4047: 'function': 'NodeInfo *' differs in levels of indirection from 'Queue **'
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(95,38): warning C4024: 'insertFromQueueToList': different types for formal and actual parameter 2
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(153,73): warning C4028: formal parameter 2 different from declaration
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(262,27): warning C4133: '==': incompatible types - from 'SimpleListC_Tail *' to 'Node *'
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(262,54): warning C4133: '!=': incompatible types - from 'SimpleListC_Tail *' to 'Node *'
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(264,31): warning C4018: '<=': signed/unsigned mismatch
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(265,28): warning C4018: '>=': signed/unsigned mismatch
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(270,29): warning C4133: '!=': incompatible types - from 'SimpleListC_Tail *' to 'Node *'
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(274,14): warning C4133: '=': incompatible types - from 'Node *' to 'SimpleListC_Tail *'
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(275,20): warning C4133: '=': incompatible types - from 'SimpleListC_Tail *' to 'Node *'
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(287,49): warning C4018: '<=': signed/unsigned mismatch
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(288,22): warning C4018: '>=': signed/unsigned mismatch
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(302,39): warning C4018: '<=': signed/unsigned mismatch
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(303,36): warning C4018: '>=': signed/unsigned mismatch
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(259,1): warning C4133: 'initializing': incompatible types - from 'SimpleListC_Tail *' to 'Node *'
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(269,1): warning C4133: 'initializing': incompatible types - from 'SimpleListC_Tail *' to 'Node *'
+C:\Code Projects\SDD\[exam]\[exam]\Source.c(332,18): warning C4553: '==': result of expression not used; did you intend '='?
+  [exam].vcxproj -> C:\Code Projects\SDD\[exam]\Debug\[exam].exe
